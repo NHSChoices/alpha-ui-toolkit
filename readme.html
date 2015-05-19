@@ -1,0 +1,12 @@
+<h1>NHS Choices Style Toolkit</h1><p>This provides a <strong>pattern library</strong> for interface elements for the NHS site. It includes markup, CSS (based on Bootstrap, built using Less), and (eventually) JavaScript. It&#39;s intended to be a resource for developers, as a central hub for our front-end site components.</p>
+<p>The root directory can be served as a static site (so it works on Github pages). It&#39;s built using the static site-generator functionality of Harp.</p>
+<h2>Development notes</h2><p><strong>Warning</strong> -- the contents of the root directory will get overwritten by Harp during the build process. Everything that needs to persist needs to live in _harp (from there, it&#39;ll get copied up to the root).</p>
+<h3>Prerequisites for development:</h3><ul>
+<li><a href="https://nodejs.org/">node.js</a></li>
+<li><a href="http://harpjs.com/">harp server</a></li>
+</ul>
+<h3>Building</h3><p>To build, run this at the root directory:</p>
+<pre><code>harp compile _harp ./
+</code></pre><p>To serve the site locally without building it, run this (with your choice of port number):</p>
+<pre><code>harp server _harp --port 8001
+</code></pre>
