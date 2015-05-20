@@ -1,0 +1,24 @@
+{
+  "name": "nhsc-ui-toolkit",
+  "version": "0.0.1",
+  "description": "Documentation and resource for development and design of the digital NHS user interface",
+  "main": "index.js",
+  "scripts": {
+    "build": "harp compile _source www",
+    "serve": "serve.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NHSChoices/alpha-ui-toolkit.git"
+  },
+  "keywords": [
+    "pattern",
+    "library"
+  ],
+  "author": "NHSC",
+  "license": " ",
+  "bugs": {
+    "url": "https://github.com/NHSChoices/alpha-ui-toolkit/issues"
+  },
+  "homepage": "https://github.com/NHSChoices/alpha-ui-toolkit#readme"
+}
