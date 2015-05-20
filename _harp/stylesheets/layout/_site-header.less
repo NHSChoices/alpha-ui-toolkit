@@ -1,0 +1,37 @@
+.siteHeader {
+    background: @blue;
+    color: #fff;
+}
+.siteHeader__logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.siteHeader__controls {
+    @height: 50px;
+    @vertical-margin: (@navbar-height - @height) / 2;
+    float: right;
+    height: @height;
+    margin-top: @vertical-margin;
+    margin-bottom: @vertical-margin;
+}
+
+.siteHeader__button {
+    text-align: center;
+    background: @navy;
+    color: #fff;
+    height: 100%;
+    .box-sizing(border-box);
+    padding: 0;
+    min-width: 50px;
+    margin-left: 6px;
+    &:hover, &:focus {
+        color: #fff;
+    }
+}
+.siteHeader__button__label {
+    display: block;
+    line-height: 1;
+}
