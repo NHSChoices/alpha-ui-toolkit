@@ -1,9 +1,19 @@
 .header-navigation {
     background: @blue;
     color: #fff;
-    .navbar-brand {
+    .navbar-brand:before {
+        content: '';
+        display: block;
         width: 105px;
         height: 42px;
         background: url('../images/nhs-logo-med.png');
     }
+    .navbar-right {
+        float: right;
+    }
+}
+
+.header-button-login,
+.header-button-menu {
+    background: @navy;
 }
