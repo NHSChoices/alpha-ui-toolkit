@@ -12,7 +12,7 @@ site-generator functionality of Harp.
 
 **Warning** -- the contents of the www directory will get overwritten by Harp 
 during the build process. Everything that needs to persist needs to live in 
-_source (from there, it'll get copied up to the root).
+_source (from there, it'll get copied into www).
 
 ### Prerequisites for development:
 
