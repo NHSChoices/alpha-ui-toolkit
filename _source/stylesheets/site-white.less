@@ -1,4 +1,5 @@
 @import "_bootstrap/variables.less";
+@import "_bootstrap/mixins.less";
 
 @import "utils/_bootstrap-variables.less";
 @import "utils/_colour-variables.less";
@@ -12,6 +13,37 @@
     }
     .alpha {
         color: purple;
+    }
+}
+
+// Weird image replacement technique documented here:
+// https://css-tricks.com/replace-the-image-in-an-img-with-css/
+
+.siteHeader__logo {
+    .box-sizing(border-box);
+    padding-left: image-width('../images/nhs-logo-white.png');
+    background-image: url('../images/nhs-logo-white.png');
+    width: image-width('../images/nhs-logo-white.png');
+    height: image-height('../images/nhs-logo-white.png');
+    @media (max-width: @screen-sm) {
+        width: 58px;
+        padding-left: 58px;
+        height: 23px;
+        background-size: 100%;
+    }
+}
+
+.siteHeader__choices {
+    .box-sizing(border-box);
+    padding-left: image-width('../images/choices-white-bg.png');
+    background-image: url('../images/choices-white-bg.png');
+    width: image-width('../images/choices-white-bg.png');
+    height: image-height('../images/choices-white-bg.png');
+    @media (max-width: @screen-sm) {
+        width: 88px;
+        padding-left: 88px;
+        height: 23px;
+        background-size: 100%;        
     }
 }
 

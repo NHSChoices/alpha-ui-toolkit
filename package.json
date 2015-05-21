@@ -4,10 +4,8 @@
   "description": "Documentation and resource for development and design of the digital NHS user interface",
   "main": "index.js",
   "scripts": {
-    "build": "harp compile _source www",
-    "push": "git push",
+    "build": "harp compile _source www"
     
-    "prepush": "npm run build"
   },
   "repository": {
     "type": "git",
