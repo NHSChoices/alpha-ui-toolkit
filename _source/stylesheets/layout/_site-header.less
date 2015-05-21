@@ -13,7 +13,7 @@
     float: left;
     height: @navbar-height;
     margin-right: 15px;
-    text-decoration: none !important;
+    text-decoration: none;
     @media (min-width: @screen-md) {
         margin-right: 50px;
     }
@@ -22,19 +22,21 @@
         vertical-align: middle;
     }
 }
-.siteHeader__logo {
-//    position: absolute;
-//    top: 0;
-//    bottom: 0;
-//    margin: auto;
-}
 
 @media (max-width: @screen-xs) {
+    .siteHeader {
+        .siteHeader__choices, .alpha {
+            display: none;
+        }
+    }
+}
+@media (max-width: @screen-sm) {
+    // scaling images down ~0.6190476190476191
     .siteHeader__logo {
         width: 65px;
     }
-    .siteHeader .siteHeader__choices {
-        display: none;
+    .siteHeader__choices {
+        width: 100px;
     }
 }
 
