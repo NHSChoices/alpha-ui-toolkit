@@ -1,12 +1,34 @@
 .siteHeader {
     background: @blue;
     color: #fff;
+    img {
+        
+    }
+}
+.siteHeader__brand {
+    display: table;
+    float: left;
+    height: @navbar-height;
+    margin-right: 15px;
+    > span {
+        display: table-cell;
+        vertical-align: middle;
+    }
 }
 .siteHeader__logo {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+//    position: absolute;
+//    top: 0;
+//    bottom: 0;
+//    margin: auto;
+}
+
+@media (max-width: @screen-xs) {
+    .siteHeader__logo {
+        width: 65px;
+    }
+    .siteHeader .siteHeader__choices {
+        display: none;
+    }
 }
 
 .siteHeader__controls {
@@ -16,6 +38,7 @@
     height: @height;
     margin-top: @vertical-margin;
     margin-bottom: @vertical-margin;
+    margin-left: 15px;  
 }
 
 .siteHeader__button {
@@ -46,4 +69,6 @@
 .siteHeader__button__label {
     display: block;
     line-height: 1;
+    font-size: 14px;
 }
+

@@ -1,0 +1,38 @@
+.siteSearch {
+    background: #fff;
+    padding: 0;
+    overflow: hidden;
+    max-width: 400px;
+    .form-control {
+        border: 0;
+        font-size: 22px;
+        width: 100%;
+    }
+    .form-group {
+        display: inline-block;
+        margin: 0;
+        width: ~'calc(100% - 40px)';
+    }
+    .btn {
+        border: solid 1px #fff;
+        background: @ice-blue;
+        color: @blue;
+        float: right;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        padding: 0;
+        text-align: center;
+        &:hover, &:focus {
+            background: @navy;
+            color: @ice-blue;
+        }
+    }
+    .siteHeader & {
+        height: 40px;
+        @media (max-width: 605px) {
+            display: none;
+        }
+    }
+}
+
