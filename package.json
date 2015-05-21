@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "harp compile _source www",
-    "serve": "serve.js"
+    "push": "git push",
+    
+    "prepush": "npm run build"
   },
   "repository": {
     "type": "git",
