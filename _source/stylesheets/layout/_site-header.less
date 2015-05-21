@@ -27,12 +27,14 @@
     padding: 0;
     min-width: 50px;
     margin-left: 6px;
+    .transition(.4s ease background);
     &:hover, &:focus {
         color: #fff;
     }
     &:hover, &:focus {
         background: #fff;
         color: @navy;
+        .transition-duration(0s);
         .icon--user {
             background-image: url('../images/icon-user-blue.png')
         }
