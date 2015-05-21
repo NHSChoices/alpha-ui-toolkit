@@ -5,8 +5,15 @@
         color: #fff;
         font-style: italic;
         vertical-align: top;
-        //font-size: 16px;
-        opacity: .8;
+        @media (max-width: @screen-sm) {
+            font-size: 10px;
+            
+            text-transform: uppercase;
+            font-style: normal;
+        }
+    }
+    @media (max-width: @screen-xs) {
+        min-height: 50px;
     }
 }
 .siteHeader__brand {
@@ -26,22 +33,17 @@
 
 .siteHeader__logo {
     margin-right: 8px;
+    @media (max-width: @screen-sm) {
+        margin-right: 2px;
+    }
 }
 
-@media (max-width: @screen-xs) {
-    .siteHeader {
-        .siteHeader__choices, .alpha {
-            display: none;
-        }
-    }
-}
 @media (max-width: @screen-sm) {
-    // scaling images down ~0.6190476190476191
     .siteHeader__logo {
-        width: 65px;
+        width: 58px;
     }
     .siteHeader__choices {
-        width: 100px;
+        width: 88px;
     }
 }
 

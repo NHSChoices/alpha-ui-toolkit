@@ -1,0 +1,14 @@
+html {
+    overflow-y: scroll;
+    // ensure vertical scrollbar, to avoid layout jumping on short pages
+}
+.page {
+    min-width: 320px;
+}
+
+.container {
+    @media (max-width: @screen-xs) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
