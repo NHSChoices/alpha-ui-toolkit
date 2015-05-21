@@ -1,0 +1,56 @@
+@import "_bootstrap/variables.less";
+
+@import "utils/_bootstrap-variables.less";
+@import "utils/_colour-variables.less";
+@import "utils/_size-variables.less";
+
+.siteHeader {
+    background: #fff;
+    border-bottom: solid 1px @blue;
+    .siteSearch {
+        display: none;
+    }
+    .alpha {
+        color: purple;
+    }
+}
+
+.siteHeader__button {
+    color: @blue;
+    border-left-color: mix(#fff, @blue, 80%);
+    @media (min-width: @screen-xs-min) {
+        background-color: @blue;
+        color: #fff;
+        &:hover, &:focus {
+            color: @blue;
+        }
+        &:hover, &:focus {
+            .icon--menu {
+                background-image: url('../images/icon-menu-blue.png');
+            }
+            .icon--user {
+                background-image: url('../images/icon-user-blue.png');
+            }
+        }
+    }
+    @media (max-width: @screen-xs) {
+        .icon--menu {
+            background-image: url('../images/icon-menu-blue.png');
+        }
+        .icon--user {
+            background-image: url('../images/icon-user-blue.png');
+        }
+        &:hover, &:focus {
+            background-color: @blue;
+            color: #fff;
+            .icon--menu {
+                background-image: url('../images/icon-menu.png');
+            }
+            .icon--user {
+                background-image: url('../images/icon-user.png');
+            }
+        }
+    }
+    
+}
+

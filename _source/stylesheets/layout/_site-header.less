@@ -1,6 +1,7 @@
 .siteHeader {
     background: @blue;
     color: #fff;
+    border-color: @blue;
     .alpha {
         color: #fff;
         font-style: italic;
@@ -22,6 +23,9 @@
     height: @navbar-height;
     margin-right: 15px;
     text-decoration: none;
+    &:hover, &:focus {
+        text-decoration: none;
+    }
     @media (min-width: @screen-md) {
         margin-right: 50px;
     }
@@ -80,10 +84,10 @@
         color: @navy;
         .transition-duration(0s);
         .icon--user {
-            background-image: url('../images/icon-user-blue.png')
+            background-image: url('../images/icon-user-navy.png')
         }
         .icon--menu {
-            background-image: url('../images/icon-menu-blue.png')
+            background-image: url('../images/icon-menu-navy.png')
         }
     }
     @media (max-width: @screen-xs) {
