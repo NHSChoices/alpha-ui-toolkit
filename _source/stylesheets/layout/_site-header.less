@@ -29,6 +29,9 @@
         display: table-cell;
         vertical-align: middle;
     }
+    @media (max-width: @screen-xs) {
+        height: 50px;
+    }
 }
 
 .siteHeader__logo {
@@ -51,7 +54,11 @@
     height: 50px;
     .navbar-vertical-align(50px);
     float: right;
-    margin-left: 15px;  
+    margin-left: 15px;
+    @media (max-width: @screen-xs) {
+        margin: 0;
+        margin-right: -10px;
+    }
 }
 
 .siteHeader__button {
@@ -64,6 +71,7 @@
     min-width: 50px;
     margin-left: 6px;
     .transition(.4s ease background);
+    line-height: 0;
     &:hover, &:focus {
         color: #fff;
     }
@@ -78,10 +86,19 @@
             background-image: url('../images/icon-menu-blue.png')
         }
     }
+    @media (max-width: @screen-xs) {
+        float: left;
+        margin: 0;
+        background-color: transparent;
+        border-left: solid 1px mix(@blue, #fff, 80%);
+    }
 }
 .siteHeader__button__label {
     display: block;
     line-height: 1;
     font-size: 14px;
+    @media (min-height: @screen-xs) {
+        margin-top: 5px;
+    }
 }
 
