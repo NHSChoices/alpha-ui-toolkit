@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/stylesheets/main.css">
+	<link rel="stylesheet" href="/stylesheets/ui-toolkit.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -95,29 +96,86 @@
 </div>
         <div class="container">
             <h1>NHS Choices User Interface Toolkit</h1>
-            <p>Information from the National Health Service on conditions, treatments, local services and healthy living.</p>
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>This is a <strong>pattern library</strong>, an inventory of interface components, for the NHS website. It also has aspects of a <strong>style guide</strong>. It&#39;s functions include:</p>
+<ul>
+<li>establishing and maintaining visual design consistency across the NHS web platform</li>
+<li>and being a resource and an implementation example for developers</li>
+</ul>
+
+                </div>
+            </div>
             <hr></hr>
             <h2>Typography</h2>
             <div class="toolkitThing">
     
-    <h3>Headings</h3>
+    <h3 class="toolkitThing__title">Paragraph</h3>
     
-    <h1>Heading one</h1>
-<h2>Heading two</h2>
-<h3>Heading three</h3>
+    
+    <div class="row">
+        <div class="col-sm-8">
+            <p class="toolkitThing__intro">The base paragraph font size is 18px.</p>
+        </div>
+    </div>
+    
+    <div class="toolkitThing__example">
+    <span class="toolkitThing__tag">Example</span>
+    <p>Information from the National Health Service on conditions, treatments, local services and healthy living.</p>
+
+    </div>
+    
+</div>
+
+            <div class="toolkitThing">
+    
+    <h3 class="toolkitThing__title">Headings</h3>
+    
+    
+    <div class="toolkitThing__example">
+    <span class="toolkitThing__tag">Example</span>
+    <h1>Page title (heading one)</h1>
+<h2>Section title (heading two)</h2>
+<h3>Sub-section title (heading three)</h3>
 <h4>Heading four</h4>
 <h5>Heading five</h5>
 <h6>Heading six</h6>
 
-    <div>
-    <pre><code>&lt;h1&gt;Heading one&lt;/h1&gt;
-&lt;h2&gt;Heading two&lt;/h2&gt;
-&lt;h3&gt;Heading three&lt;/h3&gt;
+    </div>
+    
+    <pre class="toolkitThing__code"><span class="toolkitThing__tag">Code</span><code>&lt;h1&gt;Page title (heading one)&lt;/h1&gt;
+&lt;h2&gt;Section title (heading two)&lt;/h2&gt;
+&lt;h3&gt;Sub-section title (heading three)&lt;/h3&gt;
 &lt;h4&gt;Heading four&lt;/h4&gt;
 &lt;h5&gt;Heading five&lt;/h5&gt;
 &lt;h6&gt;Heading six&lt;/h6&gt;
 </code></pre>
+    
+</div>
+
+            <div class="toolkitThing">
+    
+    <h3 class="toolkitThing__title">Lists</h3>
+    
+    
+    <div class="toolkitThing__example">
+    <span class="toolkitThing__tag">Example</span>
+    <ul>
+    <li>unordered list</li>
+    <li>hayfever x-ray vaccination</li>
+    <li>fitness transfusion medicine</li>
+    <li>prescription nurse surgery</li>
+</ul>
+
+<ol>
+    <li>ordered list</li>
+    <li>hayfever x-ray vaccination</li>
+    <li>fitness transfusion medicine</li>
+    <li>prescription nurse surgery</li>
+</ol>
+
     </div>
+    
 </div>
 
         </div>

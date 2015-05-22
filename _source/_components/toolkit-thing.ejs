@@ -1,9 +1,19 @@
 <div class="toolkitThing">
     <% if (locals.title) { %>
-    <h3><%- title %></h3>
+    <h3 class="toolkitThing__title"><%- title %></h3>
     <% } %>
-    <%- partial(component) %>
-    <div>
-    <pre><code><%= partial(component) %></code></pre>
+    <% if (locals.intro) { %>
+    <div class="row">
+        <div class="col-sm-8">
+            <p class="toolkitThing__intro"><%- intro %></p>
+        </div>
     </div>
+    <% } %>
+    <div class="toolkitThing__example">
+    <span class="toolkitThing__tag">Example</span>
+    <%- partial(component) %>
+    </div>
+    <% if (locals.code) { %>
+    <pre class="toolkitThing__code"><span class="toolkitThing__tag">Code</span><code><%= partial(component) %></code></pre>
+    <% } %>
 </div>

@@ -2,8 +2,7 @@
 
 This provides a **pattern library** for interface elements for the NHS site. It 
 includes markup, CSS (based on Bootstrap, built using Less), and (eventually) 
-JavaScript. It's intended to be a resource for developers, as a central hub for 
-our front-end site components.
+JavaScript. It's intended to be a resource for designers and developers, and a central hub for our front-end site components.
 
 The www directory can be served as a static site. It's built using the static 
 site-generator functionality of Harp.
