@@ -31,8 +31,24 @@
     .siteHeader & {
         height: 40px;
         .navbar-vertical-align(40px);
+        @media (max-width: @breakpoint-drop-search) {
+            clear: both;
+            max-width: none;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            width: 100%;
+            display: block;
+            float: left;
+    // float needed to allow vertical positioning by negative top margin
+        }
         @media (max-width: @screen-xs) {
-            display: none;
+            margin: 0 -10px;
+            width: auto;
+            padding: 10px;
+            background: @off-white;
+            height: 60px;
+            border: 0;
+            float: none;
         }
     }
 }
