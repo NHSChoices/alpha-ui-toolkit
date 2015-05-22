@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="page">
+        <%- partial('_components/disclaimer-bar') %>
         <%- partial('_components/header') %>
         <div class="container">
             <h1>NHS Choices User Interface Toolkit</h1>
@@ -25,7 +26,10 @@
         </div>
     </div>
 </p>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/libs/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/libs/bootstrap.min.js"></script>
+<script src="/javascripts/libs/jquery.cookie.min.js"></script>
+<script src="/javascripts/alpha-disclaimer.js"></script>
 <script src="/javascripts/ui-toolkit.js"></script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+.nhs-menu {
+  border: 2px solid @blue;
+  border-top: 0;
+  z-index: 1;
+  position: relative;
+  background-color: #fff;
+  margin-top: -25px;
+}
+
+.nhs-menu > ul{
+    list-style-type: none;
+    margin-right: 45px;
+    margin-bottom: 0;
+}
+
+
+.nhs-menu li:after {
+    content: "";
+    display: block;
+    height: 1px;
+    background: #abcce7;
+}
+.nhs-menu li:last-child:after {
+    display: none;
+}
+
+.nhs-menu a{
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    padding: 20px 20px 20px 0;
+    position: relative;
+}
+
+.nhs-menu .glyphicon-menu-right{
+    color: @blue;
+    width: 20px;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.nhs-menu a span{
+    font-weight: normal;
+    color: #6A6A6A;
+}
+
+@media (max-width: 768px) {
+    .nhs-menu a span {
+        display: none;
+    }
+
+     .nhs-menu .glyphicon-menu-right {
+        display: block;
+    }
+}
