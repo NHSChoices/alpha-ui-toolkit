@@ -1,4 +1,5 @@
 $(function () {
+    var DOMAIN_NAME = 'http://alpha-ui-toolkit.azurewebsites.net/'
 
     //Determine if styles are requested and set cookie
     if (document.location.search.length > 0) {
@@ -11,7 +12,7 @@ $(function () {
 
     //apply styles requested / persisted
     for (var i = 0; i < stylesToLoad.length; i++) {
-        var url = '/stylesheets/site-' + stylesToLoad[i] + '.css';
+        var url = DOMAIN_NAME + '/stylesheets/site-' + stylesToLoad[i] + '.css';
         if (document.createStyleSheet) {
             document.createStyleSheet(url);
         } else {
@@ -20,3 +21,4 @@ $(function () {
         }
     }
 });
+
