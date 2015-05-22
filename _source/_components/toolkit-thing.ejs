@@ -1,4 +1,9 @@
 <div class="toolkitThing">
+    <% if (locals.title) { %>
     <h3><%- title %></h3>
+    <% } %>
     <%- partial(component) %>
+    <div style="background:silver">
+    <pre><%= partial(component) %></pre>
+    </div>
 </div>
