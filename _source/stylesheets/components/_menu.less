@@ -1,7 +1,7 @@
 .nhsMenu {
   z-index: 1;
   position: relative;
-  margin-top: -25px;
+  margin-top: -@navbar-margin-bottom;
   @media (min-width: @screen-xs-min) {
       background-color: #fff;
       border: 2px solid @blue;
@@ -45,7 +45,7 @@
     @media (max-width: @screen-xs) {
         background-color: #fff;
         margin-bottom: 5px;
-        padding: 10px;
+        padding: 10px 30px 10px 10px;
     }
 }
 
@@ -56,6 +56,14 @@
     position: absolute;
     right: 0;
     top: 20px;
+    @media (max-width: @screen-xs) {
+        height: 22px;
+        right: 8px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        font-size: 22px;
+    }
 }
 
 .nhsMenu a span{
