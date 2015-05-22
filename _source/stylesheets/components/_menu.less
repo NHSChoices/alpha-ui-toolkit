@@ -1,38 +1,55 @@
-.nhs-menu {
-  border: 2px solid @blue;
-  border-top: 0;
+.nhsMenu {
   z-index: 1;
   position: relative;
-  background-color: #fff;
   margin-top: -25px;
+  @media (min-width: @screen-xs-min) {
+      background-color: #fff;
+      border: 2px solid @blue;
+      border-top: 0;
+  }
+  @media (max-width: @screen-xs) {
+      background-color: @off-white;
+      margin-left: -10px;
+      margin-right: -10px;
+  }
 }
 
-.nhs-menu > ul{
+.nhsMenu > ul{
     list-style-type: none;
-    margin-right: 45px;
+    padding: 0 28px;
     margin-bottom: 0;
+    @media (max-width: @screen-xs) {
+        padding: 10px;
+    }
 }
 
-
-.nhs-menu li:after {
-    content: "";
-    display: block;
-    height: 1px;
-    background: #abcce7;
+@media (min-width: @screen-xs-min) {
+    .nhsMenu li:after {
+        content: "";
+        display: block;
+        height: 1px;
+        background: #abcce7;
+    }
+    .nhsMenu li:last-child:after {
+        display: none;
+    }
 }
-.nhs-menu li:last-child:after {
-    display: none;
-}
-
-.nhs-menu a{
+.nhsMenu a{
     display: block;
     width: 100%;
-    font-weight: bold;
-    padding: 20px 20px 20px 0;
     position: relative;
+    @media (min-width: @screen-xs-min) {
+        font-weight: bold;
+        padding: 20px 20px 20px 0;
+    }
+    @media (max-width: @screen-xs) {
+        background-color: #fff;
+        margin-bottom: 5px;
+        padding: 10px;
+    }
 }
 
-.nhs-menu .glyphicon-menu-right{
+.nhsMenu .glyphicon-menu-right{
     color: @blue;
     width: 20px;
     text-align: right;
@@ -41,17 +58,17 @@
     top: 20px;
 }
 
-.nhs-menu a span{
+.nhsMenu a span{
     font-weight: normal;
     color: #6A6A6A;
 }
 
-@media (max-width: 768px) {
-    .nhs-menu a span {
+@media (max-width: @screen-sm) {
+    .nhsMenu a span {
         display: none;
     }
 
-     .nhs-menu .glyphicon-menu-right {
+     .nhsMenu .glyphicon-menu-right {
         display: block;
     }
 }
