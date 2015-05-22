@@ -1,5 +1,6 @@
 $(function () {
-    if (document.location.hash.replace('#', '') === 'white') {
+    // load white stylesheet when url has '?white'
+    if (document.location.search.indexOf('white') > 0) {
         var url = '/stylesheets/site-white.css';
         if (document.createStyleSheet) {
             document.createStyleSheet(url);
