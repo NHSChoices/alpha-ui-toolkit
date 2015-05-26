@@ -1,5 +1,5 @@
 $(function () {
-    var DOMAIN_NAME = 'http://alpha-ui-toolkit.azurewebsites.net/'
+    var DOMAIN_NAME = 'http://alpha-ui-toolkit.azurewebsites.net';
 
     //Determine if styles are requested and set cookie
     if (document.location.search.length > 0) {
