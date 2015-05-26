@@ -37,3 +37,26 @@ But feel free to borrow anything that's useful here! */
     padding-top: 33px;
     position: relative;
 }
+
+.paletteItem {
+    .make-sm-column(3);
+    .make-xs-column(6);
+    h4 {
+        padding: 0 10px;
+    }
+}
+.paletteItem__box {
+    border: solid 1px #ccc;
+    margin: 1em 0 .5em;
+}
+.swatch {
+    height: 2em;
+    border: solid 1px #ccc;
+    border-left: 0;
+    border-right: 0;
+}
+.paletteItem__value {
+    display: block;
+    padding: 0 10px;
+    color: @black;
+}

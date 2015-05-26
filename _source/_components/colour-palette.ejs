@@ -1,0 +1,28 @@
+<% var palette = {
+    "white": "#fff",
+    "off-white": "#f4f4f4",
+    "black": "#333",
+    "blue": "#0065b7",
+    "navy": "#003399",
+    "sky-blue": "#83c4fd",
+    "ice-blue": "#e5eff8",
+    "blue-light": "#d9ecfb",
+    "blue-lighter": "#f5f9fc",
+    "brown": "#993300",
+    "tawny": "#cc6600",
+    "orange": "#ff9900",
+    "orange-light": "#feb548",
+    "green": "#006600"
+}; %>
+
+<div class="row">
+    <% Object.keys(palette).forEach(function (v) { %>
+    <div class="paletteItem">
+        <div class="paletteItem__box">
+            <h4><%= v %></h4>
+            <div class="swatch" style="background: <%= palette[v] %>;"></div>
+            <code class="paletteItem__value"><%= palette[v] %></code>
+        </div>
+    </div>
+    <% }); %>
+</div>
