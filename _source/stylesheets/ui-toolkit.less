@@ -1,19 +1,32 @@
+@import "_bootstrap/variables.less";
+@import "_bootstrap/mixins.less";
+
+@import "utils/_bootstrap-variables.less";
+@import "utils/_colour-variables.less";
+@import "utils/_size-variables.less";
+
 /* Styling specific to the toolkit, not intended for general usage elsewhere.
 But feel free to borrow anything that's useful here! */
 
-.toolkitThing__example {
-    border: solid 1px #ccc;
-    padding: 42px 12px 12px;
+.toolkitThing {
     margin-bottom: 1em;
+}
+
+.toolkitThing__example {
+    border: solid 1px @pre-border-color;
+    padding: 33px 12px 12px;
     position: relative;
+    + .toolkitThing__code {
+        border-top: 0;
+    }
 }
 
 .toolkitThing__tag {
     position: absolute;
     left: 0;
     top: 0;
-    border-right: solid 1px #ccc;
-    border-bottom: solid 1px #ccc;
+    border-right: solid 1px @pre-border-color;
+    border-bottom: solid 1px @pre-border-color;
     padding: .2em .6em;
     font-size: 14px;
     color: #555;

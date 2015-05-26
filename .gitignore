@@ -65,3 +65,5 @@ bld/
 
 #node things
 npm-debug.log
+
+.settings
