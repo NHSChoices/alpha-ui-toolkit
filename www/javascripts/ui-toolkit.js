@@ -8,7 +8,7 @@ $(function () {
 
     //load styles from cookie
     var stylesToLoad = "";
-    if ($.cookie("styleToLoad")) stylesToLoad = $.cookie("styleToLoad").split('&');
+    if($.cookie("styleToLoad")) stylesToLoad = $.cookie("styleToLoad").split('&');
 
     //apply styles requested / persisted
     for (var i = 0; i < stylesToLoad.length; i++) {
