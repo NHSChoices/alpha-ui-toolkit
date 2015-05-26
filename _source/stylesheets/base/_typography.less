@@ -4,10 +4,13 @@ h1, h2 {
     padding-bottom: 0.31em;
     margin-bottom: 0.38em;
 }
-h3, h4 {
-    font-weight: bold;
+
+@media (max-width: @screen-xs) {
+    h1 { font-size: 36px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 22px; }
 }
 
-a {
+.pageContent a {
     text-decoration: underline;
 }

@@ -15,33 +15,35 @@
     <div class="page">
         <%- partial('_components/disclaimer-bar') %>
         <%- partial('_components/header') %>
-        <div class="container">
-            <h1>NHS Choices User Interface Toolkit</h1>
-            <div class="row">
-                <div class="col-sm-8">
-                    <%- partial('_toolkit-intro') %>
+        <div class="pageContent">
+            <div class="container">
+                <h1>NHS Choices User Interface Toolkit</h1>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <%- partial('_toolkit-intro') %>
+                    </div>
                 </div>
+                <hr></hr>
+                <h2>Typography</h2>
+                <%- partial('_components/toolkit-thing', {
+                    title: 'Paragraph',
+                    intro: 'The base paragraph font size is 18px.',
+                    component: 'typography-paragraph'
+                }) %>
+                <%- partial('_components/toolkit-thing', {
+                    title: 'Headings',
+                    component: 'typography-headings',
+                    code: true
+                }) %>
+                <%- partial('_components/toolkit-thing', {
+                    title: 'Lists',
+                    component: 'typography-lists'
+                }) %>
+                <%- partial('_components/toolkit-thing', {
+                    title: 'Links',
+                    component: 'typography-links'
+                }) %>
             </div>
-            <hr></hr>
-            <h2>Typography</h2>
-            <%- partial('_components/toolkit-thing', {
-                title: 'Paragraph',
-                intro: 'The base paragraph font size is 18px.',
-                component: 'typography-paragraph'
-            }) %>
-            <%- partial('_components/toolkit-thing', {
-                title: 'Headings',
-                component: 'typography-headings',
-                code: true
-            }) %>
-            <%- partial('_components/toolkit-thing', {
-                title: 'Lists',
-                component: 'typography-lists'
-            }) %>
-            <%- partial('_components/toolkit-thing', {
-                title: 'Links',
-                component: 'typography-links'
-            }) %>
         </div>
         <%- partial('_components/footer') %>
     </div>
