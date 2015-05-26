@@ -1,11 +1,8 @@
 $(function () {
     'use strict';
-    var DOMAIN_NAME;
-    if (!!document.location.href.match('localhost')) {
-        DOMAIN_NAME = document.location.origin;
-    } else {
-        DOMAIN_NAME = 'http://alpha-ui-toolkit.azurewebsites.net';
-    }
+    var DOMAIN_NAME = document.location.origin.match('localhost') ?
+        '' :
+        'http://alpha-ui-toolkit.azurewebsites.net';
 
     //Determine if styles are requested and set cookie
     if (document.location.search.length > 0) {
@@ -29,4 +26,3 @@ $(function () {
         }
     }
 });
-
