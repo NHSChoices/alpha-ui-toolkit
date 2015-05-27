@@ -8,5 +8,8 @@
     $('#disclaimerModal').on('hidden.bs.modal', function () {
         $.cookie("acceptedDisclaimer", 1);
     });
+    $('.hide-disclaimer').click(function () {
+        $('.disclaimer.alert').hide();
+    })
     
 });
