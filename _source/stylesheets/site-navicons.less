@@ -9,51 +9,62 @@
     display: none;
 }
 
-@media (min-width: @screen-xs) {
-    .nhsMenu ul {
-        .clearfix();
-    }
-    .nhsMenu li {
-//        width: 50%;
-//        float: left;
-       // outline: solid 1px deeppink;
-    }
-    .nhsMenu a {
-        padding: 10px 0 10px 78px;
-        position: relative;
-        &:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 78px;
-            background-position: center center;
-            background-size: 61%;
-            background-repeat: no-repeat;
+.nhsMenu  {
+    @media (min-width: @screen-sm) {
+        ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        li {
+            width: 50%;
+            float: left;
+            &:nth-child(odd) {
+                clear: left;
+            }
         }
     }
-    .nhsMenu .colon,
-    .nhsMenu .glyphicon-menu-right {
-        display: none;
-    }
-    @icons: stethoscope, calendar, health, feedback, medicines, pregnancy, travel;
-    
-    .generate-icons(@counter) when (@counter > 0) {
-        .generate-icons(@counter - 1);
-        @name: extract(@icons, @counter);
-        @imgPath: url("../images/@{name}-small.png");
-        .@{name} a:before {
-            background-image: @imgPath;
+    @media (min-width: @screen-xs) {
+        ul {
+            overflow: hidden;
+            
+            
         }
-    }
-    
-    .nhsMenu {
+        li {
+            
+        }
+        a {
+            padding: 10px 0 10px 78px;
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 78px;
+                background-position: center center;
+                background-size: 61%;
+                background-repeat: no-repeat;
+            }
+        }
+        .colon,
+        .glyphicon-menu-right {
+            display: none;
+        }
+        
+        @icons: stethoscope, calendar, health, feedback, medicines, pregnancy, travel, social;
+        .generate-icons(@counter) when (@counter > 0) {
+            .generate-icons(@counter - 1);
+            @name: extract(@icons, @counter);
+            @imgPath: url("../images/@{name}-small.png");
+            .@{name} a:before {
+                background-image: @imgPath;
+            }
+        }
         .generate-icons(length(@icons));
+        .subtitle {
+            display: block;
+        }
     }
-    
-    .nhsMenu .subtitle {
-        display: block;
-    }
-    
 }
