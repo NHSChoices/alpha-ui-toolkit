@@ -10,6 +10,6 @@
     });
     $('.hide-disclaimer').click(function () {
         $('.disclaimer.alert').hide();
-    })
+    });
     
 });
