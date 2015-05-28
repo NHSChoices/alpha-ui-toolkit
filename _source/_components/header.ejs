@@ -43,43 +43,43 @@
         {
           title: "Find & Book NHS Services",
           subtitle: "Choose the date and time of your appointment",
-          icon: "stethoscope"
+          icon: "calendar"
         },
         {
           title: "Improve your health",
           subtitle: "Lose weight, stop smoking advice",
-          icon: "stethoscope"
+          icon: "health"
         },
         {
           title: "Your Feedback",
           subtitle: "Tell us your experience",
-          icon: "stethoscope"
+          icon: "feedback"
         },
         {
           title: "Medicines",
           subtitle: "Side effects, where to get help",
-          icon: "stethoscope"
+          icon: "medicines"
         },
         {
           title: "Pregnancy & Baby",
           subtitle: "What to expect",
-          icon: "stethoscope"
+          icon: "pregnancy"
         },
         {
           title: "Travel Medicines",
           subtitle: "EHIC, Vaccinations",
-          icon: "stethoscope"
+          icon: "travel"
         } 
       ];
-      for (var i = 0; i < navigation.length; i++) { %>
-        <li>
+      navigation.forEach(function(el) { %>
+        <li class="<%= el.icon %>">
           <a href="#">
-            <%= navigation[i].title %><span class="colon">:</span>
-            <span class="subtitle"><%= navigation[i].subtitle %></span>
+            <%= el.title %><span class="colon">:</span>
+            <span class="subtitle"><%= el.subtitle %></span>
             <span class="glyphicon glyphicon-menu-right"></span>
           </a>
         </li>
-      <% } %>
+      <% }); %>
       </li>
     </ul>
   </div>

@@ -10,5 +10,50 @@
 }
 
 @media (min-width: @screen-xs) {
+    .nhsMenu ul {
+        .clearfix();
+    }
+    .nhsMenu li {
+//        width: 50%;
+//        float: left;
+       // outline: solid 1px deeppink;
+    }
+    .nhsMenu a {
+        padding: 10px 0 10px 78px;
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 78px;
+            background-position: center center;
+            background-size: 61%;
+            background-repeat: no-repeat;
+        }
+    }
+    .nhsMenu .colon,
+    .nhsMenu .glyphicon-menu-right {
+        display: none;
+    }
+    @icons: stethoscope, calendar, health, feedback, medicines, pregnancy, travel;
+    
+    .generate-icons(@counter) when (@counter > 0) {
+        .generate-icons(@counter - 1);
+        @name: extract(@icons, @counter);
+        @imgPath: url("../images/@{name}-small.png");
+        .@{name} a:before {
+            background-image: @imgPath;
+        }
+    }
+    
+    .nhsMenu {
+        .generate-icons(length(@icons));
+    }
+    
+    .nhsMenu .subtitle {
+        display: block;
+    }
     
 }
