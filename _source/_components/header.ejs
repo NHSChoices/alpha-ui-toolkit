@@ -32,16 +32,55 @@
   </div>
 </header>
 <div class="container">
-<div class="collapse nhsMenu">
-  <ul>
-    <li><a href="#">Something is Wrong! <span>: Symptoms, injures &amp; conditions</span><span class="glyphicon glyphicon-menu-right"></span></a>
-    </li><li><a href="#">Find &amp; Book NHS Services <span>: Choose the date and time of your appointment</span><span class="glyphicon glyphicon-menu-right"></span></a>
-    </li><li><a href="#">Improve your health <span>: Lose weight, stop smoking advice</span><span class="glyphicon glyphicon-menu-right"></span></a>
-    </li><li><a href="#">Your Feedback <span>: Tell us your experience</span><span class="glyphicon glyphicon-menu-right"></span></a>
-    </li><li><a href="#">Medicines <span>: Side effects, where to get help</span><span class="glyphicon glyphicon-menu-right"></span></a>
-    </li><li><a href="#">Pregnancy &amp; Baby <span>: What to expect</span><span class="glyphicon glyphicon-menu-right"></span></a>
-    </li><li><a href="#">Travel Medicines <span>: EHIC, Vaccinations</span><span class="glyphicon glyphicon-menu-right"></span></a>
-    </li>
-  </ul>
-</div>
+  <div class="collapse nhsMenu">
+    <ul>
+      <% var navigation = [
+        {
+          title: "Something is Wrong!",
+          subtitle: "Symptoms, injures & conditions",
+          icon: "stethoscope"
+        },
+        {
+          title: "Find & Book NHS Services",
+          subtitle: "Choose the date and time of your appointment",
+          icon: "stethoscope"
+        },
+        {
+          title: "Improve your health",
+          subtitle: "Lose weight, stop smoking advice",
+          icon: "stethoscope"
+        },
+        {
+          title: "Your Feedback",
+          subtitle: "Tell us your experience",
+          icon: "stethoscope"
+        },
+        {
+          title: "Medicines",
+          subtitle: "Side effects, where to get help",
+          icon: "stethoscope"
+        },
+        {
+          title: "Pregnancy & Baby",
+          subtitle: "What to expect",
+          icon: "stethoscope"
+        },
+        {
+          title: "Travel Medicines",
+          subtitle: "EHIC, Vaccinations",
+          icon: "stethoscope"
+        } 
+      ];
+      for (var i = 0; i < navigation.length; i++) { %>
+        <li>
+          <a href="#">
+            <%= navigation[i].title %><span class="colon">:</span>
+            <span class="subtitle"><%= navigation[i].subtitle %></span>
+            <span class="glyphicon glyphicon-menu-right"></span>
+          </a>
+        </li>
+      <% } %>
+      </li>
+    </ul>
+  </div>
 </div>
