@@ -1,6 +1,6 @@
 $(function () {
     'use strict';
-    var DOMAIN_NAME = document.location.origin.match('localhost') ?
+    var DOMAIN_NAME = window.isToolkit ?
         '' :
         'http://alpha-ui-toolkit.azurewebsites.net';
 
