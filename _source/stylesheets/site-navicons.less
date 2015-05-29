@@ -12,9 +12,7 @@
 .nhsMenu  {
     @media (min-width: @screen-sm) {
         ul {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
+            .clearfix();
         }
         li {
             width: 50%;
@@ -26,16 +24,13 @@
     }
     @media (min-width: @screen-xs) {
         ul {
-            overflow: hidden;
-            
-            
+            padding: 14px;
         }
-        li {
-            
-        }
+        
         a {
             padding: 10px 0 10px 78px;
             position: relative;
+            line-height: 1.4;
             &:before {
                 content: '';
                 position: absolute;
@@ -53,7 +48,7 @@
             display: none;
         }
         
-        @icons: stethoscope, calendar, health, feedback, medicines, pregnancy, travel, social;
+        @icons: stethoscope, calendar, health, heartbeat, medicines, pregnancy, travel, social;
         .generate-icons(@counter) when (@counter > 0) {
             .generate-icons(@counter - 1);
             @name: extract(@icons, @counter);
