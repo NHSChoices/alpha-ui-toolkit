@@ -6,7 +6,7 @@ $(function () {
 
     //Determine if styles are requested and set cookie
     if (document.location.search.length > 0) {
-        $.cookie("styleToLoad", document.location.search.replace("?", ""));
+        $.cookie("styleToLoad", document.location.search.replace("?", ""), {path: '/'}) ;
     }
 
     //load styles from cookie
