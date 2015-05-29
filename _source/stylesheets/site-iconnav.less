@@ -26,7 +26,6 @@
         ul {
             padding: 14px;
         }
-        
         a {
             padding: 10px 0 10px 78px;
             position: relative;
@@ -47,19 +46,38 @@
         .glyphicon-menu-right {
             display: none;
         }
-        
-        @icons: stethoscope, calendar, health, heartbeat, medicines, pregnancy, travel, social;
-        .generate-icons(@counter) when (@counter > 0) {
-            .generate-icons(@counter - 1);
-            @name: extract(@icons, @counter);
-            @imgPath: url("../images/@{name}-small.png");
-            .@{name} a:before {
-                background-image: @imgPath;
-            }
-        }
-        .generate-icons(length(@icons));
         .subtitle {
             display: block;
         }
+        
     }
+    
+    @media (max-width: (@screen-xs - 1)) {
+        a {
+            &:before {
+                  content: '';
+                  float: left;
+                  width: 36px;
+                  height: 41px;
+                  position: relative;
+                  top: -8px;
+                  background-size: 36px;
+                  background-repeat: no-repeat;
+                  background-position: center center;
+                  left: -4px;
+            }
+        }
+    }
+    
+    @icons: stethoscope, calendar, health, heartbeat, medicines, pregnancy, travel, social;
+    // iterate over @icons and make rules to use image background icons 
+    .generate-icons(@counter) when (@counter > 0) {
+        .generate-icons(@counter - 1);
+        @name: extract(@icons, @counter);
+        @imgPath: url("../images/@{name}-small.png");
+        .@{name} a:before {
+            background-image: @imgPath;
+        }
+    }
+    .generate-icons(length(@icons));
 }
