@@ -9,10 +9,16 @@
         </div>
     </div>
     <% } %>
+    <% if (locals.fullWidth) { %>
+        </div></div>
+    <% } %>
     <div class="toolkitThing__example">
     <span class="toolkitThing__tag">Example</span>
     <%- partial(component) %>
     </div>
+    <% if (locals.fullWidth) { %>
+    <div class="container"><div class="pageContent">    
+    <% } %>
     <% if (locals.code) { %>
     <pre class="toolkitThing__code"><span class="toolkitThing__tag">Code</span><code><%= partial(component) %></code></pre>
     <% } %>
