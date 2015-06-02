@@ -1,3 +1,58 @@
+.task {
+    display: block;
+    margin-bottom: 5px;
+    height: 90px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+}
+
+
+.task span.header {
+    font-size: 1.5em;
+    padding-top: 16px;
+    padding-left: 90px;
+    float: left;
+}
+
+.task span.subheader {
+    font-size: 1em;
+    padding-left: 90px;
+    clear: left;
+    float: left;
+}
+
+.task.stethoscope {
+    background-image: url('../images/stethoscope-small.png');
+}
+.task.calendar {
+    background-image: url('../images/calendar-small.png');
+}
+
+.task.health {
+    background-image: url('../images/health-small.png');
+}
+
+.task.feedback {
+    background-image: url('../images/feedback-small.png');
+}
+
+.task.pregnancy {
+    background-image: url('../images/pregnancy-small.png');
+}
+
+.task.medicines {
+    background-image: url('../images/medicines-small.png');
+}
+
+.task.social {
+    background-image: url('../images/social-small.png');
+}
+
+.task.travel {
+    background-image: url('../images/travel-small.png');
+}
+
+
 @media (min-width: 480px) {
 
     .task {
@@ -105,5 +160,23 @@
 
     .task.travel {
         background-image: url('../images/travel-large.png');
+    }
+}
+
+@media (max-width: 480px) {
+    
+    .content-links .col-sm-4 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .container.links-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .links-container .task {
+        border-right: 0;
+        border-left: 0;
     }
 }
