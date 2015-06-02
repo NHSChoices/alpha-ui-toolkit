@@ -3,21 +3,23 @@
 <div class="container">
     <div class="content-links row">
         <div class="col-sm-4 col-md-3">
-            <a href="/conditionslist/index" class="task stethoscope">
-                <span class="header">Something is wrong!</span><br>
-                <span class="subheader">Symptoms, injuries &amp; conditions</span>
+            <div class="task stethoscope">
+                <a href="/conditionslist/index" class="">
+                    <span class="header">Help with a new medical problem</span><br>
+                    <span class="subheader">Symptoms, injuries &amp; conditions</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3">
+            <a class="task calendar" href="#0">
+                <span class="header">Find, book and manage NHS Services</span>
             </a>
         </div>
         <div class="col-sm-4 col-md-3">
-            <div class="task calendar">
-                <span class="header">Find &amp; Book NHS Services</span><br>
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3">
-            <div class="task health">
-                <span class="header">Improve your health</span><br>
+            <a href="#0" class="task health">
+                <span class="header">Improve my health</span><br>
                 <span class="subheader">Lose weight, stop smoking advice</span>
-            </div>
+            </a>
         </div>
         <div class="col-sm-4 col-md-3">
             <div class="task feedback">
@@ -49,6 +51,82 @@
                 <span class="subheader">EHIC, Vaccinations</span>
             </div>
         </div>
+    </div>
+    <div class="content-links row content-links-multicolour">
+        <% var tasks = [
+            {
+                "title": "Help with a new medical problem",
+                "icon": "stethoscope",
+                "links": ["Check my symptoms",
+                "Do I need to see the doctor",
+                "Do I have a specific condition"]
+            },
+            {
+                "title": "Conditions and treatments",
+                "icon": "heartbeat",
+                "links": ["Chickenpox",
+                "Abdominal pain",
+                "Headache"]
+            },
+            {
+                "title": "Find, book and manage NHS Services",
+                "icon": "calendar",
+                "links": [
+                "Book a GP appointment",
+                "Find an NHS service",
+                "Tell us about your experience"]
+            },
+            {
+                "title": "Improve my health",
+                "icon": "health",
+                "links": ["Take a health check",
+                "Help to stop smoking",
+                "How do I lose weight?"]
+            },
+            {
+                "title": "Pregnancy & Baby",
+                "icon": "pregnancy",
+                "links": ["Am I pregnant?",
+                "What to expect",
+                "Creating a birth plan"]
+            },
+            {
+                "title": "Medicines",
+                "icon": "medicine",
+                "links": ["What are the side effects of this medicine?",
+                "Can I take medicines when pregnant?",
+                "Report a problem with a medicine"]
+            },
+            {
+                "title": "Care & support",
+                "icon": "social",
+                "links": ["How to choose a care home",
+                "What social care support is available?",
+                "Carers hub"]
+            },
+            {
+                "title": "Travel medicines",
+                "icon": "travel",
+                "links": ["Apply for an EHIC",
+                "What vaccinations do I need?",
+                "How to stay healthy abroad"]
+            }
+        ];
+        tasks.forEach(function (task) { %>
+            <div class="col-sm-4 col-md-3">
+                <div class="task">
+                    <span class="task__icon task__icon--<%= task.icon %>"></span>
+                    <span class="task__header">
+                        <%= task.title %>
+                    </span>
+                    <ul>
+                        <% task.links.forEach(function(link) { %>
+                            <li><a href="#"><%= link %></a></a></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
+        <% }); %>
     </div>
 </div>
 </div>

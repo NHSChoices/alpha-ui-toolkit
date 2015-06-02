@@ -1,5 +1,24 @@
-<link rel="stylesheet" href="/stylesheets/tasks.css">
+<!--link rel="stylesheet" href="/stylesheets/tasks.css"-->
 <div class="container">
 	<h1>Tasks</h1>
 </div>
 <%- partial('_components/feature-homelinks') %>
+
+<script>
+	// add tasks stylesheet
+	(function () {
+		var DOMAIN_NAME = window.isToolkit ?
+	        '' :
+	        'http://alpha-ui-toolkit.azurewebsites.net';
+		var url = DOMAIN_NAME + '/stylesheets/tasks.css';
+        if (document.createStyleSheet) {
+            document.createStyleSheet(url);
+        } else {
+			var styleLink = document.createElement('link');
+			styleLink.rel = 'stylesheet';
+			styleLink.type = "text/css";
+			styleLink.href = url;
+			document.head.appendChild(styleLink);
+        }
+	}());
+</script>
