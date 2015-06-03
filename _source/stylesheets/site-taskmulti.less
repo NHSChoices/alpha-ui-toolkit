@@ -25,6 +25,10 @@
     @media (max-width: @screen-xs-max) {
         height: auto;
         margin-bottom: 20px;
+        padding-top: 0;
+    }
+    @media (max-width: @screen-xs) {
+        margin-bottom: 4px;
     }
 }
 
@@ -41,6 +45,15 @@
     margin: auto;
     background-position: center center;
     background-repeat: no-repeat;
+    @media (max-width: @screen-xs-max) {
+        margin: 0 15px 0 0;
+        position: relative;
+        top: 5px;
+        float: left;
+        width: 60px;
+        height: 60px;
+        background-size: 65%;
+    }
 }
 
 .task__content {
@@ -52,6 +65,7 @@
     ul {
         list-style: none;
         padding: 0;
+        clear: both;
     }
     li {
         font-size: 16px;
@@ -64,6 +78,10 @@
     @media (max-width: @screen-xs-max) {
         height: auto;
         padding-bottom: 0;
+        padding-top: 14px;
+    }
+    @media (max-width: @screen-xs) {
+        border-top: 0;
     }
 }
 
@@ -74,6 +92,20 @@
       a {
           color: @black;
       }
+      @media (max-width: @screen-xs-max) {
+          .clearfix();
+          margin-bottom: 10px;
+      }
+      @media (max-width: @screen-xs) {
+          padding-right: 32px;
+      }
+}
+
+.task__title {
+    @media (max-width: @screen-xs-max) {
+        display: block;
+        overflow: hidden;
+    }
 }
 
 @icons: stethoscope, health, calendar, heartbeat, pregnancy, medicine, travel, social;
