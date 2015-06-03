@@ -116,14 +116,16 @@
             <div class="col-sm-4 col-md-3">
                 <div class="task">
                     <span class="task__icon task__icon--<%= task.icon %>"></span>
-                    <span class="task__header">
-                        <%= task.title %>
-                    </span>
-                    <ul>
-                        <% task.links.forEach(function(link) { %>
-                            <li><a href="#"><%= link %></a></a></li>
-                        <% }) %>
-                    </ul>
+                    <div class="task__content">
+                        <span class="task__header">
+                            <a href="#"><%= task.title %></a>
+                        </span>
+                        <ul>
+                            <% task.links.forEach(function(link) { %>
+                                <li><a href="#"><%= link %></a></a></li>
+                            <% }) %>
+                        </ul>
+                    </div>
                 </div>
             </div>
         <% }); %>
