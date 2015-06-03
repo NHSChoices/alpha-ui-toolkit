@@ -6,13 +6,13 @@
 @import "utils/_size-variables.less";
 
 .siteHeader {
-    background: #fff;
+    background: @white;
     border-bottom: solid 1px @blue;
     .siteSearch {
         display: none;
     }
     .alpha {
-        color: purple;
+        color: @purple;
     }
 }
 
@@ -51,7 +51,7 @@
     @media (min-width: (@screen-xs + 1)) {
         background-color: @blue;
         border-color: @blue;
-        color: #fff;
+        color: @white;
         &:hover, &:focus {
             color: @blue;
         }
@@ -66,7 +66,7 @@
     }
     @media (max-width: @screen-xs) {
         color: @blue;
-        border-left-color: mix(#fff, @blue, 80%);
+        border-left-color: mix(@white, @blue, 80%);
         .icon--menu {
             background-image: url('../images/icon-menu-blue.png');
         }
@@ -75,7 +75,7 @@
         }
         &:hover, &:focus {
             background-color: @blue;
-            color: #fff;
+            color: @white;
             .icon--menu {
                 background-image: url('../images/icon-menu.png');
             }
@@ -93,10 +93,10 @@
 }
 
 .siteFooter {
-    background: #fff;
-    color: #333;
-    border-top: solid 1px #ccc;
+    background: @white;
+    color: @black;
+    border-top: solid 1px @grey-02;
     a {
-        color: #333;
+        color: @black;
     }   
 }
