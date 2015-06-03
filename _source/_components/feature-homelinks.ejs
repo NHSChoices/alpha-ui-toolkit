@@ -115,15 +115,18 @@
         tasks.forEach(function (task) { %>
             <div class="col-sm-4 col-md-3">
                 <div class="task">
-                    <span class="task__icon task__icon--<%= task.icon %>"></span>
                     <div class="task__content">
                         <span class="task__header">
-                            <a href="#"><%= task.title %></a>
+                            <a href="#">
+                                <span class="task__icon task__icon--<%= task.icon %>"></span>
+                                <%= task.title %>
+                            </a>
                         </span>
                         <ul>
                             <% task.links.forEach(function(link) { %>
                                 <li><a href="#"><%= link %></a></a></li>
                             <% }) %>
+                            <li><a href="#">See all</a></a></li>
                         </ul>
                     </div>
                 </div>

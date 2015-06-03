@@ -17,6 +17,14 @@
     padding-top: 40px;
     position: relative;
     height: 376px;
+    padding-bottom: 0;
+    margin-bottom: 40px;
+    padding-left: 0;
+    padding-right: 0;
+    @media (max-width: @screen-xs-max) {
+        height: auto;
+        margin-bottom: 20px;
+    }
 }
 
 .task__icon {
@@ -30,12 +38,57 @@
     left: 0;
     right: 0;
     margin: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .task__content {
     background: #fff;
     border: solid 1px #ccc;
     border-bottom-width: 2px;
-    padding: 50px 20px 20px;
+    padding: 48px 20px 20px;
     height: 333px;
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    li {
+        font-size: 16px;
+        padding: .4em 0;
+        display: block;
+        + li {
+            border-top: solid 1px #ccc;
+        }
+    }
+    @media (max-width: @screen-xs-max) {
+        height: auto;
+        padding-bottom: 0;
+    }
 }
+
+.task__header {
+      font-size: 22px;
+      margin-bottom: 20px;
+      display: block;
+      a {
+          color: @black;
+      }
+}
+
+@icons: stethoscope, health, calendar, heartbeat, pregnancy, medicine, travel, social;
+@iconColours: #e6436e, #b444b2, #339a99, #66669a, #ca145f, #4ec5dd, #5ac3b4, #f09e32; 
+// iterate over @icons and make rules to use image background icons 
+.generate-icons(@counter) when (@counter > 0) {
+    .generate-icons(@counter - 1);
+    @name: extract(@icons, @counter);
+    @colour: extract(@iconColours, @counter);
+    @imgPath: url("../images/icon-white-@{name}.png");
+    .task__icon--@{name} {
+        background-image: @imgPath;
+        background-color: @colour;
+        a:hover &, a:focus {
+            background-color: saturate(@colour, 20%);
+        }
+    }
+}
+.generate-icons(length(@icons));
