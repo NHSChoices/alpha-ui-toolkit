@@ -3,10 +3,7 @@
     text-align: center;
     font-weight: bold;
 
-    background-image: -webkit-linear-gradient(top, @orange-light 0, #feb548 100%);
-    background-image: -o-linear-gradient(top, @orange-light 0, #feb548 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, @orange-light), to(#feb548));
-    background-image: linear-gradient(to bottom, @orange-light 0, #feb548 100%);
+    background-color: @orange-light;
     color: @brown;
 
     width: 100%;
@@ -32,12 +29,16 @@
     padding: 8px;
     margin-bottom: 0px;
     border: 0;
-    border-bottom: 2px solid @brown;
+    border-bottom: 2px solid @amber;
 }
 
 /*---------disclaimer popup-----------*/
 .disclaimerModal .modal-dialog {
     margin: 80px auto;
+    .modal-header,
+    .modal-footer {
+        border-color: @amber;
+    }
 }
 
 .disclaimerModal .modal-content {
@@ -63,7 +64,7 @@
 .disclaimerModal .alert-warning {
     background-image: none;
     background-color: transparent;
-    border: 1px solid @orange;
+    border: 1px solid @amber;
     border-radius: 0px;
     color: @brown;
 }
