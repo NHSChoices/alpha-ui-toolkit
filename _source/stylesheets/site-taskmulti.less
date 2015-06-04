@@ -46,7 +46,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     @media (max-width: @screen-xs-max) {
-        margin: 0 15px 0 0;
+        margin: 0 15px 0 -5px;
         position: relative;
         top: 5px;
         float: left;
@@ -66,6 +66,15 @@
         list-style: none;
         padding: 0;
         clear: both;
+        @media (max-width: @screen-xs-max) {
+            margin-bottom: 0;
+        }
+        @media (max-width: @screen-xs) {
+            display: none;
+            .task--listOpen & {
+                display: block;
+            }
+        }
     }
     li {
         font-size: 16px;
@@ -77,7 +86,7 @@
     }
     @media (max-width: @screen-xs-max) {
         height: auto;
-        padding-bottom: 0;
+        padding-bottom: 14px;
         padding-top: 14px;
     }
     @media (max-width: @screen-xs) {
@@ -98,6 +107,8 @@
       }
       @media (max-width: @screen-xs) {
           padding-right: 32px;
+          position: relative;
+          font-size: 20px;
       }
 }
 
@@ -125,3 +136,38 @@
     }
 }
 .generate-icons(length(@icons));
+
+.task__expander {
+    position: absolute;
+    top: -10px;
+    right: -16px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    text-align: center;
+    font-size: 38px;
+    line-height: 48px;
+    
+    &:hover, &:focus {
+        text-decoration: none;
+    }
+    @media (min-width: (@screen-xs + 1)) {
+        display: none;
+    }
+    .task__open {
+        font-family: serif;
+        // serif makes + symbol thinner
+    }
+    .task__close {
+        display: none;
+    }
+    .task--listOpen & {
+        .task__open {
+            display: none;
+            
+        }
+        .task__close {
+            display: inline;
+        }
+    }
+}
