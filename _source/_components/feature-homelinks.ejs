@@ -122,12 +122,16 @@
                                 <span class="task__title"><%= task.title %></span>
                             </a>
                         </span>
-                        <ul>
-                            <% task.links.forEach(function(link) { %>
-                                <li><a href="#"><%= link %></a></a></li>
-                            <% }) %>
-                            <li><a href="#">See all</a></a></li>
-                        </ul>
+                        <div class="task__links">
+                            <ul>
+                                <% task.links.forEach(function(link) { %>
+                                    <li><a href="#"><%= link %></a></li>
+                                <% }) %>
+                            </ul>
+                            <div class="task__all">
+                                <a href="#">See all topics <span aria-hidden="true" class="glyphicon glyphicon-menu-right"></span></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
