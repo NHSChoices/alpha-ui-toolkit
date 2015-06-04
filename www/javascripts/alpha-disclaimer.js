@@ -6,7 +6,7 @@
         $('#disclaimerModal').modal('show');
     });
     $('#disclaimerModal').on('hidden.bs.modal', function () {
-        $.cookie("acceptedDisclaimer", 1);
+        $.cookie("acceptedDisclaimer", 1, { path: '/' });
     });
     $('.hide-disclaimer').click(function () {
         $('.disclaimer.alert').hide();
