@@ -66,7 +66,9 @@
                 "icon": "heartbeat",
                 "links": ["Chickenpox",
                 "Abdominal pain",
-                "Headache"]
+                "Headache"],
+                "personalLinks": ["Managing an aacute asthma attack", 
+                "Record your blood glucose for today"]
             },
             {
                 "title": "Find, book and manage NHS Services",
@@ -74,14 +76,20 @@
                 "links": [
                 "Book a GP appointment",
                 "Find an NHS service",
-                "Tell us about your experience"]
+                "Tell us about your experience"],
+                "personalLinks": ["Book appointment at Riverside Surgery",
+                "Tell us how Taunton Hospital was last week",
+                "My recent GP visits experience"]
             },
             {
                 "title": "Improve my health",
                 "icon": "health",
                 "links": ["Take a health check",
                 "Help to stop smoking",
-                "How do I lose weight?"]
+                "How do I lose weight?"],
+                "personalLinks": ["Record your weight this week",
+                "See my weight loss progress",
+                "This week's healthy eating programme"]
             },
             {
                 "title": "Pregnancy & Baby",
@@ -89,13 +97,6 @@
                 "links": ["Am I pregnant?",
                 "What to expect",
                 "Creating a birth plan"]
-            },
-            {
-                "title": "Medicines",
-                "icon": "medicine",
-                "links": ["What are the side effects of this medicine?",
-                "Can I take medicines when pregnant?",
-                "Report a problem with a medicine"]
             },
             {
                 "title": "Care & support",
@@ -123,6 +124,13 @@
                             </a>
                         </span>
                         <div class="task__links">
+                            <% if (task.personalLinks) { %>
+                                <ul class="task__links__list--personalised">
+                                <% task.personalLinks.forEach(function(link) { %>
+                                    <li><a href="#"><%= link %></a></li>
+                                <% }) %>
+                                </ul>
+                            <% } %>
                             <ul>
                                 <% task.links.forEach(function(link) { %>
                                     <li><a href="#"><%= link %></a></li>
