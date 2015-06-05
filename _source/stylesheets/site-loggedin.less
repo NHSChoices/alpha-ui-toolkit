@@ -1,3 +1,9 @@
+@import "_bootstrap/variables.less";
+@import "_bootstrap/mixins.less";
+
+@import "utils/_bootstrap-variables.less";
+@import "utils/_colour-variables.less";
+@import "utils/_size-variables.less";
 // Unhides user-specific notifications on homepage, and customises tasks
 
 .task__links__list--personalised {
@@ -5,4 +11,17 @@
     + ul {
         display: none;
     }
+}
+
+.siteHeader__button--user {
+    border-color: @maroon;
+    background: @white;
+    color: @maroon;
+    &:hover, &:focus {
+        color: @blue;
+        border-color: @blue;
+    }
+}
+.icon--user {
+    background-image: url('../images/icon-user-red.png');
 }
