@@ -37,5 +37,15 @@
         }) %>
         <h2>Components</h2>
         <h3><a href="/tasks.html">Homepage task panels</a> | <a href="/tasks.html?blue">blue</a> | <a href="/tasks.html?white&taskwhite">white</a> | <a href="/tasks.html?taskmulti">multicolour</a></h3>
+        <%- partial('_components/toolkit-thing', {
+            title: 'Stripe title',
+            component: 'feature-stripe-title',
+            code: true
+        }) %>
+        <%- partial('_components/toolkit-thing', {
+            title: 'Notification alert',
+            component: 'feature-notification',
+            code: true
+        }) %>
 </div>
 </div>

@@ -63,7 +63,7 @@
       </a>
     
     <div class="siteHeader__controls">
-      <button class="siteHeader__button btn">
+      <button class="siteHeader__button btn siteHeader__button--user">
         <span class="icon icon--user"></span>
         <span class="siteHeader__button__label">Login</span>
       </button>
@@ -160,6 +160,60 @@
         <!--link rel="stylesheet" href="/stylesheets/tasks.css"-->
 <div class="container">
 	<h1>Tasks</h1>
+    <div class="loggedInOnly">
+        <h2 class="welcomeHeader">
+            <span class="welcomeHeader__greeting">Welcome back, John</span>
+            <span class="welcomeHeader__id">NHS no: 298 764 44373</span>
+        </h2>
+        <h3 class="stripeTitle">My notifications</h3>
+            <div class="alert alert-success notification" role="alert">
+                <span class="glyphicon glyphicon-envelope notification__icon" aria-hidden="true"></span>
+                <span class="notification__content">
+                    <span class="notification__information">
+                        Your test results are ready
+                    </span>
+                    <span class="notification_actions">
+                        <a href="#" class="notification__button btn">View test results</a>
+                    </span>
+                </span>
+            </div>
+            <div class="alert alert-success notification" role="alert">
+                <span class="glyphicon glyphicon-envelope notification__icon" aria-hidden="true"></span>
+                <span class="notification__content">
+                    <span class="notification__information">
+                        You need to book your follow up appointment with the GP &hellip;
+                    </span>
+                    <span class="notification_actions">
+                        <a href="#" class="notification__button btn">Book an appointment</a>
+                    </span>
+                </span>
+            </div>
+
+            <div class="alert alert-success notification" role="alert">
+                <span class="glyphicon glyphicon-envelope notification__icon" aria-hidden="true"></span>
+                <span class="notification__content">
+                    <span class="notification__information">
+                        A new appointment has been booked for you at Royal Devon & Exeter Hospital on the 18th July. You can accept or change this &hellip;
+                    </span>
+                    <span class="notification_actions">
+                        <a href="#" class="notification__button btn">View appointment booking</a>
+                    </span>
+                </span>
+            </div>
+            <div class="alert alert-success notification" role="alert">
+                <span class="glyphicon glyphicon-envelope notification__icon" aria-hidden="true"></span>
+                <span class="notification__content">
+                    <span class="notification__information">
+                        Dr Parker has issued you a new prescription. Have it sent to the pharmacy of your choice &hellip;
+                    </span>
+                    <span class="notification_actions">
+                        <a href="#" class="notification__button btn">View new prescription details</a>
+                    </span>
+                </span>
+            </div>
+            <hr class="vertical-space">
+        <h3 class="stripeTitle">My NHS accounts</h3>
+    </div>
 </div>
 <style>body { background: #f4f4f4; }</style>
 <div style="font-size:14px; padding: 2em 0 2px">

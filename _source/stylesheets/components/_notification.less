@@ -1,0 +1,56 @@
+.notification {
+    .clearfix();
+    position: relative;
+    margin-bottom: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.notification__icon {
+    position: absolute;
+    font-size: 24px;
+    color: @blue;
+    height: 28px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.notification__content {
+    padding-left: 44px;
+    display: block;
+    @media (min-width: @screen-sm) {
+        display: table;
+        width: 100%;
+    }
+}
+.notification_actions {
+    display: block;
+    padding-top: 10px;
+    @media (min-width: @screen-sm) {
+        text-align: right;
+    }
+}
+.notification__information, .notification_actions {
+    @media (min-width: @screen-sm) {
+        display: table-cell;
+        vertical-align: middle;
+        padding-top: 0;
+    }
+}
+.notification .notification__button {
+    @media (min-width: @screen-sm) {
+        margin-left: 50px;
+    }    
+    text-decoration: none;
+    border: solid 2px @green-grass;
+    color: @green;
+    font-weight: bold;
+    padding: 0.32em 1em;
+    &:hover, &:focus {
+        background-color: @green-grass;
+        color: @black;
+        border-color: @green;
+    }
+    @media (max-width: (@screen-sm - 1)) {
+      white-space: normal;
+    }
+}
