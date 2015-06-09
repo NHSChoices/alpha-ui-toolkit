@@ -61,7 +61,6 @@ bld/
 *.csproj
 *.ui.toolkit.csproj
 *.csproj.user
-*.config
 
 #node things
 npm-debug.log
