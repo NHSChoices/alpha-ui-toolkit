@@ -26,5 +26,15 @@
 <script src="/javascripts/alpha-disclaimer.js"></script>
 <script src="/javascripts/ui-toolkit.js"></script>
 <script src="/javascripts/mobile-task-expander.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+<script src="/javascripts/nearest-services-widget.js"></script>
+<script type="text/javascript">
+  $( document ).ready(function () {
+  var model = new ServicesModel({ serviceType: 'gpp' });
+  model.hasError(false);
+  ensureAndBindTemplates(["gp-template", "ph-template", "service-address-template"], model);
+  });
+</script>
 </body>
 </html>
