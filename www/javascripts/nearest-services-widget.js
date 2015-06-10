@@ -9,11 +9,11 @@
     };
 }
 
+var ServicesModel = function (data) {
+    var self = this;
     self.hasLocation = ko.observable(false);
     self.hasError = ko.observable(false);
     self.errorMessage = ko.observable('');
-var ServicesModel = function (data) {
-    var self = this;
     self.location = new LocationModel({ longitude: 0, latidude: 0 });
     self.serviceList = ko.observableArray([]);
     self.locationQuery = ko.observable('');
@@ -28,9 +28,7 @@ var ServicesModel = function (data) {
     };
 
     self.searchLinkUrl = ko.computed(function () {
-
         return '/services?' + searchParams();
-
     });
 
     self.templateToUse = ko.computed(function () {
