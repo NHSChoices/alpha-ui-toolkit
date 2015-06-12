@@ -1,0 +1,33 @@
+/* ok */
+.task.task {
+    background-image: none;
+    padding-top: 80px + 40px;
+} 
+.task:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+@icons: stethoscope, health, calendar, heartbeat, pregnancy, medicines, travel, social;
+@iconColours: #e6436e, #b444b2, #339a99, #66669a, #ca145f, #4ec5dd, #5ac3b4, #f09e32;
+
+.generate-icons(@counter) when (@counter > 0) {
+    .generate-icons(@counter - 1);
+    @name: extract(@icons, @counter);
+    @colour: extract(@iconColours, @counter);
+    @imgPath: url("../images/icon-white-@{name}.png");
+    .task.@{name}:before {
+        background-image: @imgPath;
+        background-color: @colour;
+    }
+}
+.generate-icons(length(@icons));
