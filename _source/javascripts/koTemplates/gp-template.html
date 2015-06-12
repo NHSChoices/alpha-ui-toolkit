@@ -7,7 +7,7 @@
                     <h3 class="serviceFinderWidget__heading">Find your GP</h3>
                     <div>
                         <div class="input-group gpSearch">
-                            <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town" />
+                            <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town"/>
                             <span class="input-group-addon">
                                 <button data-bind="click: findNearestService(locationQuery())" class="btn btn-primary serviceFinderWidget__searchButton">
                                     <span class="glyphicon glyphicon-search"></span>
@@ -25,9 +25,11 @@
                         <!-- ko if: hasError -->
                         <p data-bind="text:errorMessage"></p>
                         <!-- /ko -->
-                        <!-- ko if: (nearestService() && !hasError()) -->
+                        <!-- ko  if: (nearestService() && !hasError()) -->
                         <div data-bind="template: { name: 'service-address-template', data: nearestService() }"></div>
-                        <div class="serviceFinderWidget__serviceName">
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary" type="button">Book a GP appointment</button>
                             <hr />
                             <a data-bind="attr: { href: searchLinkUrl}">Search alternative GP practices ></a>
                         </div>

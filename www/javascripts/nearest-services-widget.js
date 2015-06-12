@@ -54,7 +54,13 @@ var ServicesModel = function (data) {
 
     });
 
-    //ko.mapping.fromJS(data, self);
+    self.setLocalService = function() {
+        var nearestServiceJson = ko.toJSON(self.nearestService());
+        if (nearestServiceJson.length > 0) {
+            $.cookie("localService_" + self.serviceType(), nearestServiceJson, { path: '/' });
+        }
+
+    };
 
     self.getLocation = function () {
         if (navigator.geolocation) {
@@ -125,8 +131,9 @@ var ServicesModel = function (data) {
 
 function ensureAndBindTemplates(list, viewModel) {
     var loadedTemplates = [];
+    var thisPath = getScriptDomainandPath('nearest-services-widget.js');
     ko.utils.arrayForEach(list, function (name) {
-        $.get("/javascripts/koTemplates/" + name + ".html?v=1", function (template) {
+        $.get(thisPath + "/koTemplates/" + name + ".html?v=1", function (template) {
             $("body").append(template);
             loadedTemplates.push(name);
             if (list.length === loadedTemplates.length) {
@@ -134,4 +141,15 @@ function ensureAndBindTemplates(list, viewModel) {
             }
         });
     });
+}
+
+function getScriptDomainandPath(scriptFileName) {
+    var jsscript = document.getElementsByTagName("script");
+    for (var i = 0; i < jsscript.length; i++) {
+        var pattern = RegExp("\\b" + scriptFileName + "\\b", "g");
+        if (pattern.test(jsscript[i].getAttribute("src")))
+            return jsscript[i].getAttribute("src").replace(scriptFileName, "");
+    }
+
+    return '';
 }
