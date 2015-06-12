@@ -1,4 +1,10 @@
-/* ok */
+@import "_bootstrap/variables.less";
+@import "_bootstrap/mixins.less";
+
+@import "utils/_bootstrap-variables.less";
+@import "utils/_colour-variables.less";
+@import "utils/_size-variables.less";
+
 .task.task {
     background-image: none;
     padding-top: 80px + 40px;
@@ -31,3 +37,31 @@
     }
 }
 .generate-icons(length(@icons));
+
+@media (max-width: @screen-xs-max) {
+    .task.task {
+        padding: 14px 14px 14px 90px;
+        position: relative;
+        height: auto;
+        &:before {
+            width: 60px;
+            height: 60px;
+            left: 15px;
+            right: auto;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background-size: 65%;
+        }
+        .header, .subheader {
+            padding: 0;
+            float: none;
+        }
+    }
+}
+
+@media (max-width: @screen-xs) {
+    .task {
+        border-top: 0;
+    }
+}
