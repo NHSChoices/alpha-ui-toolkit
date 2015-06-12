@@ -25,7 +25,7 @@
                         <!-- ko if: hasError -->
                         <p data-bind="text:errorMessage"></p>
                         <!-- /ko -->
-                        <!--  -->
+                        <!-- ko  if: (nearestService() && !hasError()) -->
                         <div data-bind="template: { name: 'service-address-template', data: nearestService() }"></div>
                         <div>
                             <hr/>
