@@ -39,7 +39,7 @@
     background-repeat: no-repeat;
 }
 
-@icons: stethoscope, health, calendar, heartbeat, pregnancy, medicines, travel, social;
+@icons: stethoscope, health, calendar, conditions, pregnancy, medicines, travel, social;
 @iconColours: #e6436e, #b444b2, #339a99, #66669a, #ca145f, #4ec5dd, #5ac3b4, #f09e32;
 
 .generate-icons(@counter) when (@counter > 0) {
@@ -72,6 +72,7 @@
         .header, .subheader {
             padding: 0;
             float: none;
+            position:initial;
         }
         .header {
             margin-bottom: 0;
