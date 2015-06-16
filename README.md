@@ -1,30 +1,25 @@
 # NHS Choices Style Toolkit
 
-This provides a **pattern library** for interface elements for the NHS site. It includes markup, CSS (based on Bootstrap, built using Less), and (eventually) JavaScript. It's intended to be a resource for designers and developers, and a central hub for our front-end site components.
+This provides a **pattern library** for interface elements for the NHS site. It includes markup, CSS (based on Bootstrap, built using Less), and JavaScript. It's intended to be a resource for designers and developers, and a central hub for our front-end site components.
 
-The www directory can be served as a static site. It's built using the static site-generator functionality of Harp.
 
-## Development notes
-
-**Warning** -- the contents of the www directory will get overwritten by Harp during the build process. Everything that needs to persist needs to live in _source (from there, it'll get copied into www).
-
-### Prerequisites for development:
+## Prerequisites:
 
 - [node.js](https://nodejs.org/)
-- [harp server](http://harpjs.com/)
-
-### Building
-
-To build, run this at the root directory:
-
-    npm run build
-
-To serve the site locally without building it, run this (with your choice of port number):
-
-    harp server _source --port 8000
+- [harp](http://harpjs.com/)
 
 
-## Add repository to .net project
+## Running locally
+
+In order to start the site run `node server.js` and browser to [localhost:5000](http://localhost:5000) to confirm correct function.
+
+
+## Static site
+
+The site can be exported to flat, static assets via [Harp's](http://harpjs.com/) [compile](http://harpjs.com/docs/environment/compile). Running `npm run build` will do this, generating the static site in a directory called `www`.
+
+
+## Adding the repository to .net project
 
 If you want to include the ui-toolkit code within a .net project the steps below can be followed to add the repository as a git-submodule:
 

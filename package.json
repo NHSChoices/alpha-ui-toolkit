@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "harp compile _source www"
-    
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NHSChoices/alpha-ui-toolkit.git"
+  },
+  "dependencies": {
+    "harp": "*"
   },
   "keywords": [
     "pattern",
