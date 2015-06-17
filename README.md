@@ -3,20 +3,21 @@
 This provides a **pattern library** for interface elements for the NHS site. It includes markup, CSS (based on Bootstrap, built using Less), and JavaScript. It's intended to be a resource for designers and developers, and a central hub for our front-end site components.
 
 
-## Prerequisites:
+## Prerequisites
 
 - [node.js](https://nodejs.org/)
-- [harp](http://harpjs.com/)
 
 
-## Running locally
+## Run the site locally
 
-In order to start the site run `node server.js` and browser to [localhost:5000](http://localhost:5000) to confirm correct function.
+* Install node modules locally - `npm install`.
+* Start the site - `node server.js`.
+* Browse to [localhost:5000](http://localhost:5000).
 
 
-## Static site
+## Export to static site
 
-The site can be exported to flat, static assets via [Harp's](http://harpjs.com/) [compile](http://harpjs.com/docs/environment/compile). Running `npm run build` will do this, generating the static site in a directory called `www`.
+The site can be exported to flat, static assets via [Harp's](http://harpjs.com/) [compile](http://harpjs.com/docs/environment/compile). Do this via `npm run build`. The site will be generated and saved to a directory called `www`.
 
 
 ## Adding the repository to .net project
