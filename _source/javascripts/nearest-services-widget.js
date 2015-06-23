@@ -176,7 +176,11 @@ function ensureAndBindTemplates(list, viewModel, elementId) {
             $("body").append(template);
             loadedTemplates.push(name);
             if (list.length === loadedTemplates.length) {
-                ko.applyBindings(viewModel, document.getElementById(elementId));
+                if (elementId)
+                    ko.applyBindings(viewModel, document.getElementById(elementId));
+                else {
+                    ko.applyBindings(viewModel);
+                }
             }
         });
     });
