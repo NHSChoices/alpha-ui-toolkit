@@ -14,10 +14,11 @@ var ServicesModel = function (data) {
     self.hasLocation = ko.observable(false);
     self.hasError = ko.observable(false);
     self.errorMessage = ko.observable('');
-    self.location = new LocationModel({ longitude: 0, latidude: 0 });
     self.serviceList = ko.observableArray([]);
     self.locationQuery = ko.observable('');
     self.serviceType = ko.observable('pha');
+    self.savedServices = {};
+
     var googleMapscurrentLocation = ko.observable('saddr=Current+Location');
     var googleMapsServiceLocation = ko.observable('');
     var searchParams = ko.observable('');
@@ -27,9 +28,15 @@ var ServicesModel = function (data) {
         return serviceDetails;
     };
 
-    self.searchLinkUrl = ko.computed(function () {
-        return '/services?' + searchParams();
-    });
+    var addTelephonedetailsLink = function (serviceDetails) {
+        serviceDetails.telephoneNumberLink = 'tel:' + serviceDetails.telephoneNumber;
+        return serviceDetails;
+    };
+
+    var addPartialPostcode = function (serviceDetails) {
+        serviceDetails.partialPostcode = serviceDetails.address.postcode.substring(0, serviceDetails.address.postcode.indexOf(' '))
+        return serviceDetails;
+    };
 
     self.templateToUse = ko.computed(function () {
         return self.serviceType() === 'gpp' ? 'gp-template' : 'ph-template';
@@ -37,34 +44,56 @@ var ServicesModel = function (data) {
 
     if (data && data.serviceType) self.serviceType(data.serviceType);
 
+    self.location = new LocationModel({ longitude: 0, latidude: 0 });
+
     var gpSearchInitialised = false;
     self.nearestService = ko.computed(function () {
         if (self.serviceList() && self.serviceList().length > 0) {
             googleMapsServiceLocation('daddr=' + self.serviceList()[0].latitude + ',' + self.serviceList()[0].longitude);
-            var serviceDetails = addMapsLink(self.serviceList()[0]);
+            var serviceDetails =  addPartialPostcode(
+                                    addTelephonedetailsLink(
+                                        addMapsLink(self.serviceList()[0])));
             return serviceDetails;
         }
         return '';
     });
 
+    self.searchLinkUrl = ko.computed(function () {
+        var params = searchParams();
+        if (params.length == 0 && self.nearestService()) {
+            params = 'location=' + self.nearestService().partialPostcode;
+        }
+        return '/services?' + params;
+    });
+
+    self.isSavedService = ko.computed(function () {
+        if (self.nearestService() && self.nearestService().organisationType
+            && self.savedServices && self.savedServices[self.nearestService().organisationType.toLowerCase()])
+            return self.nearestService().id === self.savedServices[self.nearestService().organisationType.toLowerCase()].id;
+        return false;
+    });
 
     self.location.longitude.subscribe(function () {
-        self.findNearestService(self.location);
-        googleMapscurrentLocation('saddr=' + self.location.latitude() + ',' + self.location.longitude());
+        this.findNearestService(this.location);
+        googleMapscurrentLocation('saddr=' + this.location.latitude() + ',' + this.location.longitude());
 
-    });
+    }, self);
 
     self.setLocalService = function() {
         var nearestServiceJson = ko.toJSON(self.nearestService());
         if (nearestServiceJson.length > 0) {
             $.cookie("localService_" + self.serviceType(), nearestServiceJson, { path: '/' });
         }
+        return true;
 
     };
 
     self.getLocation = function () {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(self.location.updateLocation);
+            navigator.geolocation.getCurrentPosition(function(position) {
+                self.location.latitude(position.coords.latitude);
+                self.location.longitude(position.coords.longitude);
+            });
         } else {
             self.hasError(true);
             self.errorMessage("Geolocation is not supported by this browser.");
@@ -112,7 +141,7 @@ var ServicesModel = function (data) {
         searchParams($.param(params));
 
         $.ajax({
-            url: '/api/servicessearch?' + searchParams(),
+            url: 'http://staging.alpha.nhs.uk/api/servicessearch?' + searchParams(),
             type: 'GET',
             dataType: 'json',
             headers: { 'Ocp-Apim-Subscription-Key': "37eaf996fe3e42cb9b3bca8452d6dbff" }
@@ -127,9 +156,19 @@ var ServicesModel = function (data) {
                 self.errorMessage("Unable to find nearst GP");
             });
     }
+
+    var init = function() {
+        var localService = $.cookie("localService_" + self.serviceType());
+        if (localService && localService.length > 0) {
+            self.savedServices[self.serviceType()] = JSON.parse(localService);
+            self.serviceList.push(self.savedServices[self.serviceType()]);
+        }
+    };
+
+    init();
 }
 
-function ensureAndBindTemplates(list, viewModel) {
+function ensureAndBindTemplates(list, viewModel, elementId) {
     var loadedTemplates = [];
     var thisPath = getScriptDomainandPath('nearest-services-widget.js');
     ko.utils.arrayForEach(list, function (name) {
@@ -137,7 +176,11 @@ function ensureAndBindTemplates(list, viewModel) {
             $("body").append(template);
             loadedTemplates.push(name);
             if (list.length === loadedTemplates.length) {
-                ko.applyBindings(viewModel);
+                if (elementId)
+                    ko.applyBindings(viewModel, document.getElementById(elementId));
+                else {
+                    ko.applyBindings(viewModel);
+                }
             }
         });
     });
