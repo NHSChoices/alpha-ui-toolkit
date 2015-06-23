@@ -25,7 +25,8 @@
                         <!-- ko if: hasError -->
                         <p data-bind="text:errorMessage"></p>
                         <!-- /ko -->
-                        <!-- ko  if: (nearestService() && !hasError()) -->
+                        <!-- ko if: (nearestService() && !hasError()) -->
+                        <p class="serviceFinderWidget__addressLabel">Nearest surgery:</p>
                         <div data-bind="template: { name: 'service-address-template', data: nearestService() }"></div>
                         <div>
                             <hr/>

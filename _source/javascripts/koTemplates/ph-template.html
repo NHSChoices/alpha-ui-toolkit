@@ -25,13 +25,22 @@
                         <!-- ko if: hasError -->
                         <p data-bind="text:errorMessage"></p>
                         <!-- /ko -->
-                        <!-- ko  if: (nearestService() && !hasError()) -->
+                        <!-- ko if: (nearestService() && !hasError()) -->
+                        <p class="serviceFinderWidget__addressLabel">Nearest pharmacy:</p>
                         <div data-bind="template: { name: 'service-address-template', data: nearestService() }"></div>
                         <div>
+                            <!-- ko if: !isSavedService() -->
                             <hr/>
                             <span>Save as your local pharmacy <input type="checkbox" data-bind="click: setLocalService" /></span> 
-                            <hr />
+                            <!-- /ko -->
+                            <hr/>
+                            <p data-bind="if: isSavedService()">This is not your nearest pharmacy?</p>
+                            <!-- ko if: !isSavedService() -->
                             <a data-bind="attr: { href: searchLinkUrl}">Search all pharmacies ></a>
+                            <!-- /ko -->
+                            <!-- ko if: isSavedService() -->
+                            <a data-bind="attr: { href: searchLinkUrl}, text: 'Search all pharmacies in ' + nearestService().partialPostcode  + ' >'  "></a>
+                            <!-- /ko -->
                         </div>
                         <!-- /ko -->
                     </div>

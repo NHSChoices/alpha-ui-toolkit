@@ -1,13 +1,14 @@
 ﻿<script type="text/html" id="service-address-template">
     <address class="serviceFinderWidget__address">
-        <p class="serviceFinderWidget__addressLabel">Nearest surgery:</p>
-        <div data-bind="text: name" class="serviceFinderWidget__serviceName"></div>
-        <span data-bind="text: address.addressLine1"></span><br />
-        <span data-bind="text: address.addressLine2"></span><br />
-        <span data-bind="text: address.city"></span><br />
-        <span data-bind="text: address.postcode"></span><br />
 
-        <a data-bind="attr: { href: telephoneNumber}"><abbr class="glyphicon glyphicon-earphone" title="Phone"></abbr> <span data-bind="text:  telephoneNumber"></span></a>
-        <a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
+        <div data-bind="text: name" class="serviceFinderWidget__serviceName"></div>
+        <span data-bind="text: address.addressLine1"></span><br/>
+        <span data-bind="text: address.addressLine2"></span><br/>
+        <span data-bind="text: address.city"></span><br/>
+        <span data-bind="text: address.postcode"></span><br/>
+
+        <a data-bind="attr: { href: telephoneNumberLink}"><abbr title="Phone">Tel</abbr> <span data-bind="text:  telephoneNumber"></span></a>
     </address>
+    <hr/>
+    <span data-bind="text: distance + 'miles away (straight line)'"></span><span> | </span><a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
 </script>
