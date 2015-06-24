@@ -29,9 +29,14 @@
                         <p class="serviceFinderWidget__addressLabel">Nearest surgery:</p>
                         <div data-bind="template: { name: 'service-address-template', data: nearestService() }"></div>
                         <div>
+                            <!-- ko if: !isSavedService() -->
+                            <hr/>
+                            <span>Save as your GP <input type="checkbox" data-bind="click: setLocalService" /></span>
+                            <!-- /ko -->
                             <hr/>
                             <button class="btn btn-primary" type="button">Book a GP appointment</button>
-                            <hr />
+                            <hr/>
+                            <p data-bind="if: isSavedService()">This is not your GP?</p>
                             <a data-bind="attr: { href: searchLinkUrl}">Search alternative GP practices ></a>
                         </div>
 
