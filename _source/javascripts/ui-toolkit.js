@@ -4,6 +4,18 @@ $(function () {
         '' :
         'http://alpha-ui-toolkit.azurewebsites.net';
 
+    var searchParameters = [
+      "tagContent",
+      "q",
+      "longitude",
+      "latitude",
+      "tagVideos",
+      "organisationType",
+      "allowGeoLocation",
+      "indexName",
+      "tag"
+    ];
+
     //Determine if styles are requested and set cookie
     if (document.location.search.length > 0) {
         $.cookie("styleToLoad", document.location.search.replace("?", ""), {path: '/'}) ;
@@ -17,12 +29,17 @@ $(function () {
 
     //apply styles requested / persisted
     for (var i = 0; i < stylesToLoad.length; i++) {
+      
+      if (!($.inArray(stylesToLoad[i], searchParameters)))
+      {
         var url = DOMAIN_NAME + '/stylesheets/site-' + stylesToLoad[i] + '.css';
         if (document.createStyleSheet) {
-            document.createStyleSheet(url);
+          document.createStyleSheet(url);
         } else {
-            $('<link rel="stylesheet" type="text/css" href="' +
-                url + '" />').appendTo('head');
-        }
+          $('<link rel="stylesheet" type="text/css" href="' +
+              url + '" />').appendTo('head');
+        }        
+      }
     }
 });
+
