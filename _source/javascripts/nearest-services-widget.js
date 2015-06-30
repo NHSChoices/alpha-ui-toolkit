@@ -46,6 +46,31 @@ var ServicesModel = function (data) {
 
     self.location = new LocationModel({ longitude: 0, latidude: 0 });
 
+    self.checkIsOpen = function(openingTimes) {
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        var now = new Date();
+
+        var todaysOpeningTime = openingTimes.times.filter(function(item) {
+            return (item.type == "Surgery" || item.type == "General") && item.day == days[now.getDay()]
+        });
+
+        if (todaysOpeningTime.length < 1) {
+            console.log("The nearest pharmacy had no opening times for today.");
+            return false;
+        }
+
+        var openingHours = parseInt(todaysOpeningTime[0].opens.substring(0, 2));
+        var openingMinutes = parseInt(todaysOpeningTime[0].opens.substring(3, 5));
+        var opening = new Date(now.getFullYear(), now.getMonth(), now.getDate(), openingHours, openingMinutes);
+        
+        var closingHours = parseInt(todaysOpeningTime[0].closes.substring(0, 2));
+        var closingMinutes = parseInt(todaysOpeningTime[0].closes.substring(3, 5));
+        var closing = new Date(now.getFullYear(), now.getMonth(), now.getDate(), closingHours, closingMinutes);
+
+        return now > opening && now < closing;
+    };
+
     var gpSearchInitialised = false;
     self.nearestService = ko.computed(function () {
         if (self.serviceList() && self.serviceList().length > 0) {
@@ -53,6 +78,7 @@ var ServicesModel = function (data) {
             var serviceDetails =  addPartialPostcode(
                                     addTelephonedetailsLink(
                                         addMapsLink(self.serviceList()[0])));
+            serviceDetails.isOpen = self.checkIsOpen(serviceDetails.openingTimes);
             return serviceDetails;
         }
         return '';
