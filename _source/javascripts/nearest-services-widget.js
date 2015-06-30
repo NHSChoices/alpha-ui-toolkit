@@ -51,24 +51,29 @@ var ServicesModel = function (data) {
 
         var now = new Date();
 
-        var todaysOpeningTime = openingTimes.times.filter(function(item) {
-            return (item.type == "Surgery" || item.type == "General") && item.day == days[now.getDay()]
+        var todaysOpeningTimes = openingTimes.times.filter(function (item) {
+            return item.day == days[now.getDay()]
         });
 
-        if (todaysOpeningTime.length < 1) {
+        if (todaysOpeningTimes.length < 1) {
             console.log("The nearest pharmacy had no opening times for today.");
             return false;
         }
 
-        var openingHours = parseInt(todaysOpeningTime[0].opens.substring(0, 2));
-        var openingMinutes = parseInt(todaysOpeningTime[0].opens.substring(3, 5));
-        var opening = new Date(now.getFullYear(), now.getMonth(), now.getDate(), openingHours, openingMinutes);
-        
-        var closingHours = parseInt(todaysOpeningTime[0].closes.substring(0, 2));
-        var closingMinutes = parseInt(todaysOpeningTime[0].closes.substring(3, 5));
-        var closing = new Date(now.getFullYear(), now.getMonth(), now.getDate(), closingHours, closingMinutes);
+        for (var i = 0; i < todaysOpeningTimes.length; ++i) {
+            var openingHours = parseInt(todaysOpeningTimes[i].opens.substring(0, 2));
+            var openingMinutes = parseInt(todaysOpeningTimes[i].opens.substring(3, 5));
+            var opening = new Date(now.getFullYear(), now.getMonth(), now.getDate(), openingHours, openingMinutes);
 
-        return now > opening && now < closing;
+            var closingHours = parseInt(todaysOpeningTimes[i].closes.substring(0, 2));
+            var closingMinutes = parseInt(todaysOpeningTimes[i].closes.substring(3, 5));
+            var closing = new Date(now.getFullYear(), now.getMonth(), now.getDate(), closingHours, closingMinutes);
+
+            if (now > opening && now < closing)
+                return true;
+        }
+
+        return false;
     };
 
     var gpSearchInitialised = false;
@@ -79,6 +84,10 @@ var ServicesModel = function (data) {
                                     addTelephonedetailsLink(
                                         addMapsLink(self.serviceList()[0])));
             serviceDetails.isOpen = self.checkIsOpen(serviceDetails.openingTimes);
+            if ($.cookie("styleToLoad") && $.cookie("styleToLoad").indexOf("closeServices") > -1)
+                serviceDetails.isOpen = false;
+            if ($.cookie("styleToLoad") && $.cookie("styleToLoad").indexOf("openServices") > -1)
+                serviceDetails.isOpen = true;
             return serviceDetails;
         }
         return '';
