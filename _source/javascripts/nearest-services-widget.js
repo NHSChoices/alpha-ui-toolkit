@@ -46,6 +46,36 @@ var ServicesModel = function (data) {
 
     self.location = new LocationModel({ longitude: 0, latidude: 0 });
 
+    self.checkIsOpen = function(openingTimes) {
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        var now = new Date();
+
+        var todaysOpeningTimes = openingTimes.times.filter(function (item) {
+            return item.day == days[now.getDay()]
+        });
+
+        if (todaysOpeningTimes.length < 1) {
+            console.log("The nearest pharmacy had no opening times for today.");
+            return false;
+        }
+
+        for (var i = 0; i < todaysOpeningTimes.length; ++i) {
+            var openingHours = parseInt(todaysOpeningTimes[i].opens.substring(0, 2));
+            var openingMinutes = parseInt(todaysOpeningTimes[i].opens.substring(3, 5));
+            var opening = new Date(now.getFullYear(), now.getMonth(), now.getDate(), openingHours, openingMinutes);
+
+            var closingHours = parseInt(todaysOpeningTimes[i].closes.substring(0, 2));
+            var closingMinutes = parseInt(todaysOpeningTimes[i].closes.substring(3, 5));
+            var closing = new Date(now.getFullYear(), now.getMonth(), now.getDate(), closingHours, closingMinutes);
+
+            if (now > opening && now < closing)
+                return true;
+        }
+
+        return false;
+    };
+
     var gpSearchInitialised = false;
     self.nearestService = ko.computed(function () {
         if (self.serviceList() && self.serviceList().length > 0) {
@@ -53,6 +83,11 @@ var ServicesModel = function (data) {
             var serviceDetails =  addPartialPostcode(
                                     addTelephonedetailsLink(
                                         addMapsLink(self.serviceList()[0])));
+            serviceDetails.isOpen = self.checkIsOpen(serviceDetails.openingTimes);
+            if ($.cookie("styleToLoad") && $.cookie("styleToLoad").indexOf("closeServices") > -1)
+                serviceDetails.isOpen = false;
+            if ($.cookie("styleToLoad") && $.cookie("styleToLoad").indexOf("openServices") > -1)
+                serviceDetails.isOpen = true;
             return serviceDetails;
         }
         return '';

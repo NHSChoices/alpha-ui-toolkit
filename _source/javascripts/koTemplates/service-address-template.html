@@ -2,13 +2,23 @@
     <address class="serviceFinderWidget__address">
 
         <div data-bind="text: name" class="serviceFinderWidget__serviceName"></div>
-        <span data-bind="text: address.addressLine1"></span><br/>
-        <span data-bind="text: address.addressLine2"></span><br/>
-        <span data-bind="text: address.city"></span><br/>
-        <span data-bind="text: address.postcode"></span><br/>
+        <span data-bind="text: address.addressLine1"></span><br />
+        <span data-bind="text: address.addressLine2"></span><br />
+        <span data-bind="text: address.city"></span><br />
+        <span data-bind="text: address.postcode"></span><br />
 
         <a data-bind="attr: { href: telephoneNumberLink}"><abbr title="Phone">Tel</abbr> <span data-bind="text:  telephoneNumber"></span></a>
     </address>
-    <hr/>
-    <span data-bind="text: distance + 'miles away (straight line)'"></span><span> | </span><a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
+    <hr />
+    <span data-bind="text: distance + 'miles away (straight line)'"></span>
+    <span> | </span>
+    <a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
+    <div data-bind="visible: isOpen">
+        <hr />
+        <span class="serviceFinderWidget__open">Open now</span>
+    </div>
+    <div data-bind="visible: !isOpen">
+        <hr />
+        <span class="serviceFinderWidget__closed">Closed</span>
+    </div>
 </script>
