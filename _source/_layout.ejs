@@ -17,6 +17,7 @@
     <div class="page">
         <%- partial('_components/disclaimer-bar') %>
         <%- partial('_components/header') %>
+		<%- partial('_components/breadcrumb') %>
         <%- yield %>
         <%- partial('_components/footer') %>
     </div>
@@ -29,12 +30,16 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
 <script src="/javascripts/nearest-services-widget.js"></script>
+<script src="/javascripts/breadcrumb.js"></script>
 <script type="text/javascript">
   $( document ).ready(function () {
   var phamodel = new ServicesModel({ serviceType: 'pha' });
   ensureAndBindTemplates(["ph-template", "service-address-template"], phamodel, 'phaWidget');
   var gpmodel = new ServicesModel({ serviceType: 'gpp' });
   ensureAndBindTemplates(["gp-template", "service-address-template"], gpmodel, 'gpWidget');
+
+  var breadCrumbModel = new breadCrumbViewModel();
+	 ko.applyBindings(breadCrumbModel, document.getElementById('breadcrumb'));
   });
 </script>
 </body>
