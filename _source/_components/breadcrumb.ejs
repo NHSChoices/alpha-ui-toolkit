@@ -1,0 +1,7 @@
+﻿
+<ul id="breadcrumb" class="container breadcrumb" data-bind="visible:breadCrumbs().length > 1, foreach: breadCrumbs">
+    <li>
+        <a data-bind="attr: { href: url }, text: text, css: { active: active }"></a> 
+      <span data-bind="visible: $index < breadCrumbViewModel.breadCrumbs - 1" class="divider">></span>
+    </li>
+ </ul> 

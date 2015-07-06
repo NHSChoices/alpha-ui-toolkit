@@ -1,0 +1,224 @@
+﻿[
+  {
+    "key": "/",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      }
+    ]
+  },
+    {
+    "key": "/Conditions",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/chickenpox",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Chickenpox",
+        "url": "/Conditions/chickenpox"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/cold%20sores",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Cold sores",
+        "url": "/Conditions/cold%20sores"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/conjunctivitis",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Conjunctivitis",
+        "url": "/Conditions/conjunctivitis"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/corns%20and%20calluses",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Corns and calluses",
+        "url": "/Conditions/corns%20and%20calluses"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/fungal%20nail%20infection",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Fungal nail infection",
+        "url": "/Conditions/fungal%20nail%20infection"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/head%20lice",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Head lice",
+        "url": "/Conditions/head%20lice"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/ingrown%20toenail",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Ingrown toenail",
+        "url": "/Conditions/ingrown%20toenail"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/mouth%20ulcers",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Mouth ulcers",
+        "url": "/Conditions/mouth%20ulcers"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/stye",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Stye",
+        "url": "/Conditions/stye"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/threadworms",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Threadworms",
+        "url": "/Conditions/threadworms"
+      }
+    ]
+  },
+  {
+    "key": "/Conditions/vaginal%20thrush",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Conditions",
+        "url": "/Conditions"
+      },
+      {
+        "text": "Vaginal thrush",
+        "url": "/Conditions/vaginal%20thrush"
+      }
+    ]
+  },
+  {
+    "key": "/tasks.html",
+    "items": [
+      {
+        "text": "Home",
+        "url": "/"
+      },
+      {
+        "text": "Tasks",
+        "url": "/tasks.html"
+      }
+    ]
+  }
+]
