@@ -33,18 +33,25 @@
 <script src="/javascripts/breadcrumb.js"></script>
 <script type="text/javascript">
   $( document ).ready(function () {
+<<<<<<< HEAD
+  var phamodel = new ServicesModel({ serviceType: 'pha' });
+  ensureAndBindTemplates(null, phamodel, 'phaWidget');
+  var gpmodel = new ServicesModel({ serviceType: 'gpp' });
+  ensureAndBindTemplates(null, gpmodel, 'gpWidget');
+=======
             if ($('#phaWidget').length > 0)
                 {
                     var phamodel = new ServicesModel({ serviceType: 'pha' });
-                    ensureAndBindTemplates([null, "service-address-template"], phamodel, 'phaWidget');
+                    ensureAndBindTemplates(["ph-template", "service-address-template"], phamodel, 'phaWidget');
                 }
             if ($('#gpWidget').length > 0)
                 {
                     var gpmodel = new ServicesModel({ serviceType: 'gpp' });
-                    ensureAndBindTemplates([null, "service-address-template"], gpmodel, 'gpWidget');
+                    ensureAndBindTemplates(["gp-template", "service-address-template"], gpmodel, 'gpWidget');
                 }
   var breadcrumbsModel = new breadCrumbViewModel();
  // ko.applyBindings(breadcrumbsModel, document.getElementById('breadcrumb'));
+>>>>>>> 16e71fccd02b8c8893ec2d4456c62326db7ec3de
   });
 </script>
 </body>
