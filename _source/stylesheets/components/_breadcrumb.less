@@ -2,9 +2,27 @@
       background-color:transparent;
       padding:0 0 0 0;
       margin-bottom:0;
-    
+      content: ">\00a0";
 }
 
     .breadcrumb a {
         color:#666;
     }
+
+    .breadcrumb > li + li:before {
+        content: ">\00a0";
+    }
+
+
+@media (min-width: @screen-xs) {
+    .breadcrumb{
+      margin-top:-40px;
+}
+ 
+}
+
+ @media (max-width: @screen-xs) {
+    .breadcrumb {
+       display:none;
+    }
+}

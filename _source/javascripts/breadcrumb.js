@@ -3,10 +3,8 @@
     var SEARCH_PATH = '/search?';
     self.breadCrumbs = ko.observableArray();
     self.searchReferals = ko.observableArray();
-    self.addCrumb = function (url, text) {
-        self.breadCrumbs.push({ 'url': url, 'text': text, 'active': true });
-        if (self.breadCrumbs()[self.breadCrumbs().length - 2])
-            self.breadCrumbs()[self.breadCrumbs().length - 2].active = false;
+    self.addCrumb = function (url, text, active) {
+        self.breadCrumbs.push({ 'url': url, 'text': text, 'active': active });
     }
 
     self.reset = function () {
@@ -50,8 +48,9 @@
                     if (items) {
                         for (var i = 0; i < items.length; i++) {
                             var searchCrumb = getSearchResultsCrumb(items[i].url.toLowerCase());
+                            var active = i === (items.length - 1);
                             if (searchCrumb) self.addCrumb(searchCrumb.url, searchCrumb.text);
-                            self.addCrumb(items[i].url, items[i].text);
+                            self.addCrumb(items[i].url, items[i].text, active);
                         };
                     }
                 }
