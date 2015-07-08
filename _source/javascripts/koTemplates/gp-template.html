@@ -4,10 +4,11 @@
             <div class="panel panel-primary serviceFinderWidget">
                 <div class="panel-body">
 
-                    <h3 class="serviceFinderWidget__heading">Find your GP</h3>
-                    <div>
+                    <h3 id="gpp-arrow" class="serviceFinderWidget__heading" data-bind="click: showForm">Find your nearest GP<span class="glyphicon glyphicon-triangle-right pull-right"></span></h3>
+                    <div data-bind="text: nearestService().name, visible: isSavedService() && !isVisible()" class="serviceFinderWidget__serviceName"></div>
+                    <div data-bind="slideIn: isVisible">
                         <div class="input-group gpSearch">
-                            <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town"/>
+                            <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town" />
                             <span class="input-group-addon">
                                 <button data-bind="click: findNearestService(locationQuery())" class="btn btn-primary serviceFinderWidget__searchButton">
                                     <span class="glyphicon glyphicon-search"></span>
@@ -19,8 +20,6 @@
                             Use my current location
                             <span class="glyphicon glyphicon-screenshot"></span>
                         </button>
-                    </div>
-                    <div class="">
                         <!-- ko if: hasError -->
                         <p data-bind="text:errorMessage"></p>
                         <!-- /ko -->
@@ -28,9 +27,14 @@
                         <p class="serviceFinderWidget__addressLabel">Nearest surgery:</p>
                         <div data-bind="template: { name: 'service-address-template', data: nearestService() }"></div>
                         <div>
-                            <hr/>
+                            <!-- ko if: !isSavedService() -->
+                            <hr />
+                            <span>Save as your local GP <input type="checkbox" data-bind="click: setLocalService" /></span>
+                            <!-- /ko -->
+                            <hr />
                             <button class="btn btn-primary" type="button">Book a GP appointment</button>
                             <hr />
+                            <p data-bind="if: isSavedService()">This is not your nearest GP?</p>
                             <a data-bind="attr: { href: searchLinkUrl}">Search alternative GP practices ></a>
                         </div>
 

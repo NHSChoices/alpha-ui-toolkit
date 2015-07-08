@@ -1,0 +1,16 @@
+﻿<script type="text/html" id="service-opening-times-template">
+    <!-- ko foreach: $data -->
+    <tr>
+        <th data-bind="text: day"></th>
+        <!-- ko foreach: times -->
+            <!-- ko ifnot: $data == null -->
+            <td data-bind="text: opens + ' - ' + closes"></td>
+            <!-- /ko -->
+            <!-- ko if: $data == null -->
+            <td>&nbsp;</td>
+            <!-- /ko -->
+        <!-- /ko -->
+    </tr>
+    <!-- /ko -->
+
+</script>

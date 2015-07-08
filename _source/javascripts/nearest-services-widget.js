@@ -18,6 +18,8 @@ var ServicesModel = function (data) {
     self.locationQuery = ko.observable('');
     self.serviceType = ko.observable('pha');
     self.savedServices = {};
+    self.showTimesLink = ko.observable('Show hours');
+    self.isTimesVisible = ko.observable(false);
 
     var googleMapscurrentLocation = ko.observable('saddr=Current+Location');
     var googleMapsServiceLocation = ko.observable('');
@@ -41,6 +43,16 @@ var ServicesModel = function (data) {
     self.templateToUse = ko.computed(function () {
         return self.serviceType() === 'gpp' ? 'gp-template' : 'ph-template';
     });
+
+    self.showTimes = function () {
+        if (self.isTimesVisible()) {
+            self.showTimesLink("Show hours");
+            self.isTimesVisible(false);
+        } else {
+            self.showTimesLink("Hide hours");
+            self.isTimesVisible(true);
+        }
+    };
 
     if (data && data.serviceType) self.serviceType(data.serviceType);
 
@@ -74,6 +86,41 @@ var ServicesModel = function (data) {
         }
 
         return false;
+    };  
+
+    self.createTimesGrid = function (openingTimes) {
+        var days = [];
+        var maxTimes = 0;
+        for (var i = 0; i < openingTimes.times.length; i++) {
+            if (openingTimes.times[i].type != "Surgery" && openingTimes.times[i].type != "General")
+                continue;
+
+            var dayIndex = -1;
+            for (var j = 0; j < days.length; j++) {
+                if (days[j] && days[j].day == openingTimes.times[i].day) {
+                    dayIndex = j;
+                    break;
+                }
+            }
+
+            if (dayIndex < 0)
+                dayIndex = days.push({ 'day': openingTimes.times[i].day, 'times': [] }) - 1;
+
+            days[dayIndex].times.push({ 'opens': openingTimes.times[i].opens, 'closes': openingTimes.times[i].closes});
+        }
+
+        for (var k = 0; k < days.length; k++) {
+            if (days[k].times.length > maxTimes)
+                maxTimes = days[k].times.length;
+        }
+
+        for (var l = 0; l < days.length; l++) {
+            for (var m = 0; m < maxTimes - days[l].times.length; m++) {
+                days[l].times.push(null);
+            }
+        }
+
+        return days;
     };
 
     var gpSearchInitialised = false;
@@ -88,6 +135,8 @@ var ServicesModel = function (data) {
                 serviceDetails.isOpen = false;
             if ($.cookie("styleToLoad") && $.cookie("styleToLoad").indexOf("openServices") > -1)
                 serviceDetails.isOpen = true;
+
+            serviceDetails.timesGrid = self.createTimesGrid(serviceDetails.openingTimes);
             return serviceDetails;
         }
         return '';
@@ -192,18 +241,61 @@ var ServicesModel = function (data) {
             });
     }
 
+    self.isVisible = ko.observable(false);
+
+    self.showForm = function (model, event) {
+        var element = event.target;
+        if (event.target.id)
+            element = "#" + event.target.id + " span";
+
+        if (self.isVisible()) {
+            self.isVisible(false);
+            $(element).attr('class', 'glyphicon glyphicon-triangle-right pull-right');
+        } else {
+            self.isVisible(true);
+            $(element).attr('class', 'glyphicon glyphicon-triangle-bottom pull-right');
+        }
+    }
+
+
     var init = function() {
         var localService = $.cookie("localService_" + self.serviceType());
         if (localService && localService.length > 0) {
             self.savedServices[self.serviceType()] = JSON.parse(localService);
             self.serviceList.push(self.savedServices[self.serviceType()]);
         }
+
+        var isVisible = true;
+        if ($.cookie("styleToLoad") && $.cookie("styleToLoad").indexOf("serviceCollapsed") > -1)
+            isVisible = false;
+
+        self.isVisible(isVisible);
     };
 
     init();
 }
 
+ko.bindingHandlers.slideIn = {
+    init: function (element, valueAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        $(element).toggle(value);
+    },
+    update: function (element, valueAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        value ? $(element).slideDown() : $(element).slideUp();
+    }
+};
+
 function ensureAndBindTemplates(list, viewModel, elementId) {
+    var defaultTemplates = ["gp-template", "ph-template", "service-address-template", "service-opening-times-template"];
+    if (!list)
+        list = defaultTemplates;
+
+    for (var i = 0; i < defaultTemplates.length; i++) {
+        if ($.inArray(defaultTemplates[i], list) < 0)
+            list.push(defaultTemplates[i]);
+    }
+
     var loadedTemplates = [];
     var thisPath = getScriptDomainandPath('nearest-services-widget.js');
     ko.utils.arrayForEach(list, function (name) {
