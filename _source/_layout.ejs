@@ -36,12 +36,12 @@
             if ($('#phaWidget').length > 0)
                 {
                     var phamodel = new ServicesModel({ serviceType: 'pha' });
-                    ensureAndBindTemplates([null, "service-address-template"], phamodel, 'phaWidget');
+                    ensureAndBindTemplates(null, phamodel, 'phaWidget');
                 }
             if ($('#gpWidget').length > 0)
                 {
                     var gpmodel = new ServicesModel({ serviceType: 'gpp' });
-                    ensureAndBindTemplates([null, "service-address-template"], gpmodel, 'gpWidget');
+                    ensureAndBindTemplates(null, gpmodel, 'gpWidget');
                 }
   var breadcrumbsModel = new breadCrumbViewModel();
  // ko.applyBindings(breadcrumbsModel, document.getElementById('breadcrumb'));
