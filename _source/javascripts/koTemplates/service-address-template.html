@@ -10,5 +10,23 @@
         <a data-bind="attr: { href: telephoneNumberLink}"><abbr title="Phone">Tel</abbr> <span data-bind="text:  telephoneNumber"></span></a>
     </address>
     <hr/>
-    <span data-bind="text: distance + 'miles away (straight line)'"></span><span> | </span><a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
+    <div class="serviceFinderWidget__directions">
+        <span data-bind="text: distance + 'miles away (straight line)'"></span>
+        <span> | </span>
+        <a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
+    </div>
+    <div data-bind="visible: isOpen">
+        <span class="serviceFinderWidget__open">Open now</span>
+        <a data-bind="click: $parent.showTimes(), text: $parent.showTimesLink()"></a>
+    </div>
+    <div data-bind="visible: !isOpen">
+        <span class="serviceFinderWidget__closed">Closed</span>
+        <a data-bind="click: $parent.showTimes(), text: $parent.showTimesLink()"></a>
+    </div>
+    <table data-bind="template: { name: 'service-opening-times-template', data: timesGrid }, visible: $parent.isTimesVisible()" class="serviceFinderWidget__openTimes">
+    </table>
+    <div class="serviceFinderWidget__111wrap" data-bind="visible: !isOpen && organisationType == 'GPP'">
+        <a href="tel:+44111" class="serviceFinderWidget__call111 btn btn-primary">Call 111</a>
+    </div>
+
 </script>

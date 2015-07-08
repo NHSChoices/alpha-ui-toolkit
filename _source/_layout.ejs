@@ -32,9 +32,9 @@
 <script type="text/javascript">
   $( document ).ready(function () {
   var phamodel = new ServicesModel({ serviceType: 'pha' });
-  ensureAndBindTemplates(["ph-template", "service-address-template"], phamodel, 'phaWidget');
+  ensureAndBindTemplates(null, phamodel, 'phaWidget');
   var gpmodel = new ServicesModel({ serviceType: 'gpp' });
-  ensureAndBindTemplates(["gp-template", "service-address-template"], gpmodel, 'gpWidget');
+  ensureAndBindTemplates(null, gpmodel, 'gpWidget');
   });
 </script>
 </body>
