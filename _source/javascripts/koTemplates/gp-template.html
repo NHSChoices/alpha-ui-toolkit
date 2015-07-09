@@ -4,9 +4,11 @@
             <div class="panel panel-primary serviceFinderWidget">
                 <div class="panel-body">
 
-                    <h3 id="gpp-arrow" class="serviceFinderWidget__heading" data-bind="click: showForm">Find your nearest GP<span class="glyphicon glyphicon-triangle-bottom pull-right"></span></h3>
-                    <div data-bind="text: nearestService().name, visible: isSavedService() && !isVisible()" class="serviceFinderWidget__serviceName"></div>
-                    <div data-bind="text: 'Tel: ' + nearestService().telephoneNumber, visible: isSavedService() && !isVisible()"></div>
+                    <span data-bind="css: arrowClasses, click: toggleForm"></span>
+                    <h3 class="serviceFinderWidget__heading" data-bind="text: isSavedService() ? 'Your saved GP' : 'Find your nearest GP', click: toggleForm"></h3>
+                    <div data-bind="text: nearestService().name, visible: isSavedService() && !isVisible(), click: toggleForm" class="serviceFinderWidget__serviceName"></div>
+                    <a data-bind="attr: { href: 'Tel: ' + nearestService().telephoneNumber}, visible: isSavedService() && !isVisible(), click: toggleForm"><abbr title="Phone">Tel</abbr> <span data-bind="text:  nearestService().telephoneNumber"></span></a>
+                    <div data-bind="text: 'Tel: ' + nearestService().telephoneNumber, visible: isSavedService() && !isVisible(), click: toggleForm"></div>
                     <div data-bind="slideIn: isVisible">
                         <div class="input-group gpSearch">
                             <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town" />

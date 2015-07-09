@@ -86,7 +86,9 @@ var ServicesModel = function (data) {
         }
 
         return false;
-    };  
+    };
+
+    self.arrowClasses = ko.observable("glyphicon glyphicon-triangle-bottom pull-right arrow");
 
     self.createTimesGrid = function (openingTimes) {
         var days = [];
@@ -243,20 +245,18 @@ var ServicesModel = function (data) {
 
     self.isVisible = ko.observable(false);
 
-    self.showForm = function (model, event) {
-        var element = event.target;
-        if (event.target.id)
-            element = "#" + event.target.id + " span";
+    self.toggleForm = function (model, event) {
+        var clickedElement = $(event.target);
+        var isClosing = self.isVisible() && clickedElement.is(".serviceFinderWidget__heading, .arrow")
 
         if (self.isVisible()) {
             self.isVisible(false);
-            $(element).attr('class', 'glyphicon glyphicon-triangle-right pull-right');
+            self.arrowClasses("glyphicon glyphicon-triangle-right pull-right arrow");
         } else {
             self.isVisible(true);
-            $(element).attr('class', 'glyphicon glyphicon-triangle-bottom pull-right');
+            self.arrowClasses("glyphicon glyphicon-triangle-bottom pull-right arrow");
         }
     }
-
 
     var init = function() {
         var localService = $.cookie("localService_" + self.serviceType());
