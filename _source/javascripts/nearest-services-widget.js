@@ -17,7 +17,7 @@ var ServicesModel = function (data) {
     self.serviceList = ko.observableArray([]);
     self.locationQuery = ko.observable('');
     self.serviceType = ko.observable('pha');
-    self.savedServices = {};
+    self.savedServices = ko.observable({});
     self.showTimesLink = ko.observable('Show hours');
     self.isTimesVisible = ko.observable(false);
 
@@ -56,7 +56,7 @@ var ServicesModel = function (data) {
 
     if (data && data.serviceType) self.serviceType(data.serviceType);
 
-    self.location = new LocationModel({ longitude: 0, latidude: 0 });
+    self.location = new LocationModel({ longitude: 0, latitude: 0 });
 
     self.checkIsOpen = function(openingTimes) {
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -154,8 +154,8 @@ var ServicesModel = function (data) {
 
     self.isSavedService = ko.computed(function () {
         if (self.nearestService() && self.nearestService().organisationType
-            && self.savedServices && self.savedServices[self.nearestService().organisationType.toLowerCase()])
-            return self.nearestService().id === self.savedServices[self.nearestService().organisationType.toLowerCase()].id;
+            && self.savedServices() && self.savedServices()[self.nearestService().organisationType.toLowerCase()])
+            return self.nearestService().id === self.savedServices()[self.nearestService().organisationType.toLowerCase()].id;
         return false;
     });
 
@@ -169,16 +169,26 @@ var ServicesModel = function (data) {
         var nearestServiceJson = ko.toJSON(self.nearestService());
         if (nearestServiceJson.length > 0) {
             $.cookie("localService_" + self.serviceType(), nearestServiceJson, { path: '/' });
+            var savedSerciesDict = {};
+            savedSerciesDict[self.serviceType()] = self.nearestService();
+            self.savedServices(savedSerciesDict);
         }
         return true;
 
     };
 
+    self.removeLocalService = function() {
+        self.serviceList([]);
+        self.savedServices({});
+    };
+
     self.getLocation = function () {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+
                 self.location.latitude(position.coords.latitude);
                 self.location.longitude(position.coords.longitude);
+                self.location.longitude.valueHasMutated();
             });
         } else {
             self.hasError(true);
@@ -261,8 +271,10 @@ var ServicesModel = function (data) {
     var init = function() {
         var localService = $.cookie("localService_" + self.serviceType());
         if (localService && localService.length > 0) {
-            self.savedServices[self.serviceType()] = JSON.parse(localService);
-            self.serviceList.push(self.savedServices[self.serviceType()]);
+            var savedSerciesDict = {};
+            savedSerciesDict[self.serviceType()] = JSON.parse(localService);
+            self.savedServices(savedSerciesDict);
+            self.serviceList.push(self.savedServices()[self.serviceType()]);
         }
 
         var isVisible = true;
