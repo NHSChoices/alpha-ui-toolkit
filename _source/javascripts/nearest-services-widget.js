@@ -40,6 +40,17 @@ var ServicesModel = function (data) {
         return serviceDetails;
     };
 
+    var getTodaysOpeningTimes = function(openingTimes) {
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var now = new Date();
+
+        var todaysOpeningTimes = openingTimes.times.filter(function (item) {
+            return item.day == days[now.getDay()];
+        });
+        return todaysOpeningTimes;
+    };
+
+
     self.templateToUse = ko.computed(function () {
         return self.serviceType() === 'gpp' ? 'gp-template' : 'ph-template';
     });
@@ -59,14 +70,8 @@ var ServicesModel = function (data) {
     self.location = new LocationModel({ longitude: 0, latitude: 0 });
 
     self.checkIsOpen = function(openingTimes) {
-        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
+        var todaysOpeningTimes = getTodaysOpeningTimes(openingTimes);
         var now = new Date();
-
-        var todaysOpeningTimes = openingTimes.times.filter(function (item) {
-            return item.day == days[now.getDay()]
-        });
-
         if (todaysOpeningTimes.length < 1) {
             console.log("The nearest pharmacy had no opening times for today.");
             return false;
@@ -143,6 +148,18 @@ var ServicesModel = function (data) {
         }
         return '';
     });
+    self.todaysOpeningTime = ko.computed(function () {
+        if (!self.nearestService()) return '';
+        var todaysOpeningTimes = getTodaysOpeningTimes(self.nearestService().openingTimes);
+        if (todaysOpeningTimes.length < 1) {
+            console.log("The nearest pharmacy had no opening times for today.");
+            return '';
+        }
+        var day = '';
+        if (!self.nearestService().isOpen) day = todaysOpeningTimes[0].day + ' ';
+        return day + todaysOpeningTimes[0].opens + ' ' + todaysOpeningTimes[0].closes;
+    });
+
 
     self.searchLinkUrl = ko.computed(function () {
         var params = searchParams();

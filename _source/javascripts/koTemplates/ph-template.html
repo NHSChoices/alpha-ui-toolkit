@@ -1,13 +1,36 @@
 ﻿<script type="text/html" id="ph-template">
     <div class="row">
-    <div class="col-sm-6">
-        <div class="panel panel-primary serviceFinderWidget">
-            <div class="panel-body">
+        <div class="col-sm-6">
+            <div class="panel panel-primary serviceFinderWidget">
+                <div class="panel-body">
 
-                <span data-bind="css: arrowClasses, click: toggleForm"></span>
-                <h3 class="serviceFinderWidget__heading" data-bind="text: isSavedService() ? 'Your saved Pharmacy' : 'Find your nearest Pharmacy', click: toggleForm"></h3>
-                <div data-bind="text: nearestService().name, visible: isSavedService() && !isVisible(), click: toggleForm" class="serviceFinderWidget__serviceName"></div>
-                <div data-bind="slideIn: isVisible">
+                    <span data-bind="css: arrowClasses, click: toggleForm"></span>
+                    <h3 class="serviceFinderWidget__heading" data-bind="text: isSavedService() ? 'Your saved Pharmacy' : 'Find your nearest Pharmacy', click: toggleForm"></h3>
+
+                    <div id="savedServicePanel" data-bind="slideIn: isSavedService() && !isVisible(), with:nearestService()">
+                        <div data-bind="text: name, click: $parent.toggleForm" class="serviceFinderWidget__serviceName"></div>
+                        <div>
+                            <span data-bind="text: distance + 'miles away (straight line)'"></span>
+                            <span> | </span>
+                            <a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
+                        </div>
+                        <hr/>
+                        <div data-bind="visible: isOpen">
+                            <span class="serviceFinderWidget__open">Open now</span>
+                            <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
+
+                        </div>
+                        <div data-bind="visible: !isOpen">
+                            <span class="serviceFinderWidget__closed">Closed</span>
+                            <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
+
+                        </div>
+                        
+                    
+                    </div>
+                 
+                    
+                    <div data-bind="slideIn: isVisible">
                     <div data-bind="visible:!isSavedService()">
                         <div class="input-group gpSearch">
                             <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town"/>
