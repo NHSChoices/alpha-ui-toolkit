@@ -7,8 +7,7 @@
                     <span data-bind="css: arrowClasses, click: toggleForm"></span>
                     <h3 class="serviceFinderWidget__heading" data-bind="text: isSavedService() ? 'Your saved GP' : 'Find your nearest GP', click: toggleForm"></h3>
                     <div data-bind="text: nearestService().name, visible: isSavedService() && !isVisible(), click: toggleForm" class="serviceFinderWidget__serviceName"></div>
-                    <a data-bind="attr: { href: 'Tel: ' + nearestService().telephoneNumber}, visible: isSavedService() && !isVisible(), click: toggleForm"><abbr title="Phone">Tel</abbr> <span data-bind="text:  nearestService().telephoneNumber"></span></a>
-                    <div data-bind="text: 'Tel: ' + nearestService().telephoneNumber, visible: isSavedService() && !isVisible(), click: toggleForm"></div>
+                    <a data-bind="attr: { href: 'tel:' + nearestService().telephoneNumber}, visible: isSavedService() && !isVisible(), click: toggleForm"><abbr title="Phone">Tel</abbr> <span data-bind="text:  nearestService().telephoneNumber"></span></a>
                     <div data-bind="slideIn: isVisible">
                         <div class="input-group gpSearch">
                             <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town" />

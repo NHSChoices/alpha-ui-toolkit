@@ -157,7 +157,7 @@ var ServicesModel = function (data) {
         }
         var day = '';
         if (!self.nearestService().isOpen) day = todaysOpeningTimes[0].day + ' ';
-        return day + todaysOpeningTimes[0].opens + ' ' + todaysOpeningTimes[0].closes;
+        return day + todaysOpeningTimes[0].opens + ' - ' + todaysOpeningTimes[0].closes;
     });
 
 
@@ -254,7 +254,7 @@ var ServicesModel = function (data) {
         searchParams($.param(params));
 
         $.ajax({
-            url: 'http://staging.alpha.nhs.uk/api/servicessearch?' + searchParams(),
+            url: 'http://staging.alpha.nhschoices.nhs.uk/api/servicessearch?' + searchParams(),
             type: 'GET',
             dataType: 'json',
             headers: { 'Ocp-Apim-Subscription-Key': "37eaf996fe3e42cb9b3bca8452d6dbff" }
