@@ -17,10 +17,12 @@
     </div>
     <div data-bind="visible: isOpen">
         <span class="serviceFinderWidget__open">Open now</span>
+        <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
         <a data-bind="click: $parent.showTimes(), text: $parent.showTimesLink()"></a>
     </div>
     <div data-bind="visible: !isOpen">
         <span class="serviceFinderWidget__closed">Closed</span>
+        <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
         <a data-bind="click: $parent.showTimes(), text: $parent.showTimesLink()"></a>
     </div>
     <table data-bind="template: { name: 'service-opening-times-template', data: timesGrid }, visible: $parent.isTimesVisible()" class="serviceFinderWidget__openTimes">

@@ -6,15 +6,39 @@
 
                     <span data-bind="css: arrowClasses, click: toggleForm"></span>
                     <h3 class="serviceFinderWidget__heading" data-bind="text: isSavedService() ? 'Your saved Pharmacy' : 'Find your nearest Pharmacy', click: toggleForm"></h3>
-                    <div data-bind="text: nearestService().name, visible: isSavedService() && !isVisible(), click: toggleForm" class="serviceFinderWidget__serviceName"></div>
+
+                    <div id="savedServicePanel" data-bind="slideIn: isSavedService() && !isVisible(), with:nearestService()">
+                        <div data-bind="text: name, click: $parent.toggleForm" class="serviceFinderWidget__serviceName"></div>
+                        <div>
+                            <span data-bind="text: distance + 'miles away (straight line)'"></span>
+                            <span> | </span>
+                            <a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
+                        </div>
+                        <hr/>
+                        <div data-bind="visible: isOpen">
+                            <span class="serviceFinderWidget__open">Open now</span>
+                            <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
+
+                        </div>
+                        <div data-bind="visible: !isOpen">
+                            <span class="serviceFinderWidget__closed">Closed</span>
+                            <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
+
+                        </div>
+                        
+                    
+                    </div>
+                 
+                    
                     <div data-bind="slideIn: isVisible">
+                    <div data-bind="visible:!isSavedService()">
                         <div class="input-group gpSearch">
-                            <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town" />
+                            <input data-bind="value: locationQuery,event: {keyup:searchService}, valueUpdate: 'afterkeydown'" class="form-control" type="text" placeholder="Enter your postcode, street or town"/>
                             <span class="input-group-addon">
-                                <button data-bind="click: findNearestService(locationQuery())" class="btn btn-primary serviceFinderWidget__searchButton">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
+                                    <button data-bind="click: findNearestService(locationQuery())" class="btn btn-primary serviceFinderWidget__searchButton">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
                         </div>
 
                         <button data-bind="click: getLocation" class="btn btn-default serviceFinderWidget__getLocation" id="locFind" type="button">
@@ -25,25 +49,28 @@
                         <!-- ko if: hasError -->
                         <p data-bind="text:errorMessage"></p>
                         <!-- /ko -->
-                        <!-- ko if: (nearestService() && !hasError()) -->
-                        <p class="serviceFinderWidget__addressLabel">Nearest pharmacy:</p>
-                        <div data-bind="template: { name: 'service-address-template', data: nearestService() }"></div>
-                        <div>
-                            <!-- ko if: !isSavedService() -->
-                            <hr />
-                            <span>Save as your local pharmacy <input type="checkbox" data-bind="click: setLocalService" /></span>
-                            <!-- /ko -->
-                            <hr />
-                            <p data-bind="if: isSavedService()">This is not your nearest pharmacy?</p>
-                            <!-- ko if: !isSavedService() -->
-                            <a data-bind="attr: { href: searchLinkUrl}">Search all pharmacies ></a>
-                            <!-- /ko -->
-                            <!-- ko if: isSavedService() -->
-                            <a data-bind="attr: { href: searchLinkUrl}, text: 'Search all pharmacies in ' + nearestService().partialPostcode  + ' >'  "></a>
+                     </div>
+                            <!-- ko if: (nearestService() && !hasError()) -->
+                            <p data-bind="visible:!isSavedService()" class="serviceFinderWidget__addressLabel">Nearest pharmacy:</p>
+                            <div data-bind="template: { name: 'service-address-template', data: nearestService() }"></div>
+                            <div>
+
+                                <hr />
+
+
+                                <a href="#" data-bind="visible:!isSavedService(), click:setLocalService">Save as your local pharmacy</a>
+                                <a href="#" data-bind="visible:isSavedService(), click:removeLocalService">Change your saved local pharmacy</a>
+                                <hr />
+                                <p data-bind="if: isSavedService()">This is not your nearest pharmacy?</p>
+                                <!-- ko if: !isSavedService() -->
+                                <a data-bind="attr: { href: searchLinkUrl}">Search all pharmacies ></a>
+                                <!-- /ko -->
+                                <!-- ko if: isSavedService() -->
+                                <a data-bind="attr: { href: searchLinkUrl}, text: 'Search all pharmacies in ' + nearestService().partialPostcode  + ' >'  "></a>
+                                <!-- /ko -->
+                            </div>
                             <!-- /ko -->
                         </div>
-                        <!-- /ko -->
-                    </div>
                 </div>
             </div>
         </div>
