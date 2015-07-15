@@ -148,6 +148,7 @@ var ServicesModel = function (data) {
         }
         return '';
     });
+
     self.todaysOpeningTime = ko.computed(function () {
         if (!self.nearestService()) return '';
         var todaysOpeningTimes = getTodaysOpeningTimes(self.nearestService().openingTimes);
@@ -174,6 +175,28 @@ var ServicesModel = function (data) {
             && self.savedServices() && self.savedServices()[self.nearestService().organisationType.toLowerCase()])
             return self.nearestService().id === self.savedServices()[self.nearestService().organisationType.toLowerCase()].id;
         return false;
+    });
+
+    self.nearestOpenService = ko.computed(function () {
+        if (self.isSavedService() && self.serviceList().length === 1) {
+            var savedservicelocation = self.nearestService();
+            self.findNearestService(new LocationModel({ latitude: savedservicelocation.latitude, longitude: savedservicelocation.longitude }));
+        }
+        if (self.serviceList() && self.serviceList().length > 1) {
+            googleMapsServiceLocation('daddr=' + self.serviceList()[1].latitude + ',' + self.serviceList()[1].longitude);
+            var serviceDetails = addPartialPostcode(
+                                    addTelephonedetailsLink(
+                                        addMapsLink(self.serviceList()[1])));
+            serviceDetails.isOpen = self.checkIsOpen(serviceDetails.openingTimes);
+            if ($.cookie("styleToLoad") && $.cookie("styleToLoad").indexOf("closeServices") > -1)
+                serviceDetails.isOpen = false;
+            if ($.cookie("styleToLoad") && $.cookie("styleToLoad").indexOf("openServices") > -1)
+                serviceDetails.isOpen = true;
+
+            serviceDetails.timesGrid = self.createTimesGrid(serviceDetails.openingTimes);
+            return serviceDetails;
+        }
+        return '';
     });
 
     self.location.longitude.subscribe(function () {

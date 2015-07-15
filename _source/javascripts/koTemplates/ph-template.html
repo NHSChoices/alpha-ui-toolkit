@@ -14,22 +14,41 @@
                             <span> | </span>
                             <a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
                         </div>
-                        <hr/>
-                        <div data-bind="visible: isOpen">
+
+                        <div style="margin-top: 10px;" data-bind="visible: isOpen">
                             <span class="serviceFinderWidget__open">Open now</span>
                             <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
 
                         </div>
-                        <div data-bind="visible: !isOpen">
+                        <div style="margin-top: 10px;" data-bind="visible: !isOpen">
                             <span class="serviceFinderWidget__closed">Closed</span>
+                            <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
+                        </div>
+                    </div>
+                    <!-- ko if: (nearestOpenService() && !nearestService().isOpen) -->
+                    <hr/>
+
+                    <div data-bind="slideIn: isSavedService() && !isVisible(), with:nearestOpenService()">
+                        <h3 class="serviceFinderWidget__heading">Nearest Open pharmacy</h3>
+                        <div data-bind="text: name, click: $parent.toggleForm" class="serviceFinderWidget__serviceName"></div>
+                        <div>
+                            <span data-bind="text: distance + 'miles away (straight line)'"></span>
+                            <span> | </span>
+                            <a data-bind="attr: { href: googleMapsDirectionsURL}" target="_blank"><abbr class="glyphicon glyphicon-map-marker" title="Get Directions"></abbr>Get directions</a>
+                        </div>
+                      
+                        <div style="margin-top: 10px;">
+                            <span class="serviceFinderWidget__open">Open now</span>
                             <span class="text-primary serviceFinderWidget__todaysTimes" data-bind="text:$parent.todaysOpeningTime"></span>
 
                         </div>
-                        
-                    
+                       
                     </div>
-                 
-                    
+                    <!-- /ko -->
+
+
+
+
                     <div data-bind="slideIn: isVisible">
                     <div data-bind="visible:!isSavedService()">
                         <div class="input-group gpSearch">
