@@ -30,6 +30,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
 <script src="/javascripts/nearest-services-widget.js"></script>
+<script src="/javascripts/medicines-info.js"></script>
 <script src="/javascripts/breadcrumb.js"></script>
 <script type="text/javascript">
   $( document ).ready(function () {
@@ -43,7 +44,9 @@
                     var gpmodel = new ServicesModel({ serviceType: 'gpp' });
                     ensureAndBindTemplates(null, gpmodel, 'gpWidget');
                 }
-  var breadcrumbsModel = new breadCrumbViewModel();
+ // var breadcrumbsModel = new breadCrumbViewModel();
+    var model = new medicinesModel();
+  ko.applyBindings(model);
  // ko.applyBindings(breadcrumbsModel, document.getElementById('breadcrumb'));
   });
 </script>
